@@ -1,11 +1,13 @@
 <template>
   <div style="width: 100%;height:6000px;margin: auto;background-color: yellow">
-    <div style="width: 100%;margin: auto;height: 118px;background-color: lightskyblue">
+    <div style="width: 100%;margin: auto;height: 118px;background-color: black">
       <div style="width: 30%;float: left;margin-left: 50px">
         <img src="../assets/index/logo1.png" width="60%"></img>
       </div>
-      <div style="width: 60%;background-color: lightskyblue;height: 100px;float: right;margin-right: 50px">
-        <el-button type="primary" style="margin-left: 550px;margin-top:60px;line-height: 30px;width: 100px;height: 50px;margin-top: 20px;background-color: lightskyblue;border: 0px;font-size: 16px">登录/注册</el-button>
+      <div style="width: 60%;background-color: black;height: 100px;float: right;margin-left: 100px">
+        <h2 style="float: left;margin-left:460px;margin-top: 50px;color: white;width: 100px">业主入口</h2>
+        <el-button style="width: 30px;background-color: black;border: 0px solid;margin-left: 155px"><img src="../assets/index/jiantou.gif" height="118px" style="margin-left: -290px"  ></el-button>
+        <!--<el-button type="primary" style="margin-left: 00px;margin-top:-50px;line-height: 30px;width: 100px;height: 50px;margin-top: 2px;background-color: lightskyblue;border: 0px;font-size: 16px">登录/注册</el-button>-->
       </div>
     </div>
     <div style="height: 603px;width: 100%">
@@ -73,11 +75,14 @@
         <h2 style="font-weight: 400;color: purple;float: left;height: 75px">负责人介绍</h2>
       </div>
       <div style="width: 75%">
-      <div style="width: 100%;margin: auto;height: 409px">
-        <div style="width: 23%;height: 400px;float: left;border: 1px solid;margin-left: -54px"></div>
-        <div style="width: 23%;height: 400px;float: left;border: 1px solid;margin-left: 55px"></div>
-        <div style="width: 23%;height: 400px;float: left;border: 1px solid;margin-left: 55px"></div>
+      <div style="width: 100%;margin: auto;height: 389px">
+        <div style="width: 23%;height: 380px;float: left;border: 1px solid;margin-left: -54px"></div>
+        <div style="width: 23%;height: 380px;float: left;border: 1px solid;margin-left: 55px"></div>
+        <div style="width: 23%;height: 380px;float: left;border: 1px solid;margin-left: 55px"></div>
       </div>
+        <div style="width: 100%;height: 20px">
+          <h3 style="color: red;">以上是各职能负责人及其联系方式，如有问题可致电咨询，请勿骚扰，谢谢</h3>
+        </div>
     </div>
     </div>
       <div style="background-color: black;width: 100%">
