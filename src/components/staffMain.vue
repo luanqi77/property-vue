@@ -55,7 +55,7 @@
               <el-menu-item index="6-1"><router-link  to="/staffMain/addBoard">社区公告</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
-              <el-menu-item index="6-2"><router-link  to="/staffMain/addInformation">便名服务</router-link></el-menu-item>
+              <el-menu-item index="6-2"><router-link  to="/InformationList">便名服务</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

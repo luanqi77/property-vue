@@ -13,6 +13,11 @@ import selectOperate from '@/components/selectOperate'
 import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
+import InformationList from '@/components/InformationList'
+import insertInformation from '@/components/insertInformation'
+import updateInformation from '@/components/updateInformation'
+
+
 import searchUser from '@/components/searchUser'
 Vue.use(Router)
 
@@ -88,9 +93,21 @@ export default new Router({
           name:'searchUser',
           component:searchUser
         },
-
-
-
+        {
+          path:'/InformationList',
+          name:'InformationList',
+          component:InformationList
+        },
+        {
+          path:'/insertInformation',
+          name:'insertInformation',
+          component:insertInformation
+        },
+        {
+          path:'/updateInformation/:inid',
+          name:'updateInformation',
+          component:updateInformation
+        }
 
       ]
     }
