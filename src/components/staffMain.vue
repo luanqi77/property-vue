@@ -41,7 +41,8 @@
           <el-submenu index="4">
             <template slot="title"><i class="el-icon-phone"></i>报修处理</template>
             <el-menu-item-group>
-              <el-menu-item index="4-1"><router-link  to="/staffMain/selectApply">查看处理</router-link></el-menu-item>
+              <el-menu-item index="4-1"><router-link  to="/staffMain/selectApply">未处理</router-link></el-menu-item>
+              <el-menu-item index="4-2"><router-link  to="/staffMain/selectApplied">已处理</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="5">

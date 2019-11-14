@@ -9,6 +9,7 @@ import propertyAccount from '@/components/propertyAccount'
 import deduct from '@/components/deduct'
 import replyAdvise from '@/components/replyAdvise'
 import selectApply from '@/components/selectApply'
+import selectApplied from '@/components/selectApplied'
 import selectOperate from '@/components/selectOperate'
 import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
@@ -19,8 +20,6 @@ import updateInformation from '@/components/updateInformation'
 import boardList from '@/components/boardList'
 import insertBoard from '@/components/insertBoard'
 import updateBoard from '@/components/updateBoard'
-
-
 
 import searchUser from '@/components/searchUser'
 import staffInfo from '@/components/staffInfo'
@@ -81,6 +80,11 @@ export default new Router({
           path:'selectApply',
           name:'selectApply',
           component:selectApply
+        },
+        {
+          path:'selectApplied',
+          name:'selectApplied',
+          component:selectApplied
         },
         {
           path:'selectOperate',

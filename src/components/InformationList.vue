@@ -74,7 +74,7 @@
         this.$router.push({path: '/updateInformation/' + inid})
       },
       insertInformation:function (){
-        this.$router.push({path:'/insertInformation/'})
+        this.$router.push({path:'/insertInformation'})
       },
       deleteInformation:function (inid) {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
