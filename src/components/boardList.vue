@@ -1,0 +1,99 @@
+<template>
+  <div>
+  <div>
+    <el-table
+      :data="board"
+      style="width: 100%">
+      <el-table-column
+        prop="boardId"
+        label="编号"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="boardDeso"
+        label="公告描述"
+        width="300">
+      </el-table-column>
+      <el-table-column
+        prop="boardTime"
+        label="公告时间"
+        :formatter="dateFormat">
+      </el-table-column>
+      <el-table-column
+        prop="level"
+        label="等级">
+      </el-table-column>
+      <el-table-column
+        prop="title"
+        label="标题">
+      </el-table-column>
+      <el-table-column label="操作" width="180">
+        <template slot-scope="board">
+          <el-button type="primary" icon="el-icon-edit" circle @click="updateBoard(board.row.boardId)"></el-button>
+
+          <el-button type="danger" icon="el-icon-delete" circle @click="deleteBoard(board.row.boardId)"></el-button>
+
+        </template>
+      </el-table-column>
+
+    </el-table>
+  </div>
+  <div>
+      <el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>
+  </div>
+  </div>
+</template>
+
+<script>
+  import axios from 'axios'
+  export default {
+    data() {
+      return {
+        board: []
+      }
+    },
+    mounted(){
+      console.log(this.$router);
+      //默认查询页面
+      this.query();
+    },
+    methods:{
+
+      query:function () {
+        var url = 'api/findAllBoard'
+        axios.get(url).then(res =>{
+          this.board = res.data;
+        })
+      },
+      updateBoard: function (boardId) {
+        this.$router.push({path: '/updateBoard/' + boardId})
+      },
+      insertBoard:function (){
+        this.$router.push({path:'/insertBoard/'})
+      },
+      deleteBoard:function (boardId) {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '成功',
+          });
+          var url = 'api/deleteBoard'
+          axios.post(url,{boardId:boardId}).then(res=>{
+            this.query();
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        })
+
+      }
+    }
+  }
+</script>
+

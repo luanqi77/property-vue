@@ -13,6 +13,15 @@ import selectOperate from '@/components/selectOperate'
 import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
+import InformationList from '@/components/InformationList'
+import insertInformation from '@/components/insertInformation'
+import updateInformation from '@/components/updateInformation'
+import boardList from '@/components/boardList'
+import insertBoard from '@/components/insertBoard'
+import updateBoard from '@/components/updateBoard'
+
+
+
 import searchUser from '@/components/searchUser'
 import staffInfo from '@/components/staffInfo'
 import staffReply from '@/components/staffReply'
@@ -113,6 +122,36 @@ export default new Router({
           name:'manageParking',
           component:manageParking
         },
+        {
+          path:'/InformationList',
+          name:'InformationList',
+          component:InformationList
+        },
+        {
+          path:'/insertInformation',
+          name:'insertInformation',
+          component:insertInformation
+        },
+        {
+          path:'/updateInformation/:inid',
+          name:'updateInformation',
+          component:updateInformation
+        },
+        {
+          path:'/boardList',
+          name:'boardList',
+          component:boardList
+        },
+        {
+          path:'/insertBoard',
+          name:'insertBoard',
+          component:insertBoard
+        },
+        {
+          path:'/updateBoard/:boardId',
+          name:'updateBoard',
+          component:updateBoard
+        }
       ],
 
     },
