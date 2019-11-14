@@ -2,48 +2,40 @@
   <div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
-        :data="operateLog"
+        :data="reply"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
         :row-class-name="tableRowClassName">
         <el-table-column
-          prop="logId"
-          label="序号"
-          width="330"
+          prop="description"
+          label="业主投诉"
+          width="500"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="operateType"
-          label="操作类型"
-          width="452"
+          prop="replyDeso"
+          label="我的回复"
+          width="500"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="operateTime"
-          label="操作时间"
-          width="330"
+          prop="adviseTime"
+          label="投诉时间"
+          width="220"
           align="center"
           :formatter="dateFormat"
         >
         </el-table-column>
+
         <el-table-column
-          prop="staffName"
-          label="操作人"
-          width="330"
+          prop="replyTime"
+          label="回复时间"
+          width="222"
           align="center"
+          :formatter="dateFormat"
         >
         </el-table-column>
-
-        <!--<el-table-column-->
-          <!--label="操作"-->
-          <!--width="200"-->
-          <!--align="center"-->
-        <!--&gt;-->
-          <!--<template slot-scope="advise">-->
-            <!--<el-button type="primary" plain @click="applied(apply.row.applyId)">已处理</el-button>-->
-          <!--</template>-->
-        <!--</el-table-column>-->
 
       </el-table>
       <el-pagination
@@ -66,7 +58,7 @@
     components: {ElButton},
     data() {
       return {
-        operateLog:[],
+        reply:[],
         params: {
           page: '1',
           size: '10',
@@ -97,9 +89,9 @@
         this.query();
       },
       query:function () {
-        var url = '/api/operateLogFindAll/'+this.params.page+"/"+this.params.size
+        var url = '/api/adviseFindAll/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
-          this.operateLog = res.data.list;
+          this.advise = res.data.list;
           this.total=res.data.total;
         })
       },
@@ -107,18 +99,9 @@
         var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
-//      applied:function (applyId) {
-//        var url='api/updateApplyStatus'
-//        axios.get(url,{applyId:applyId}).then(res=>{
-//          if (res.data=="ok") {
-//            this.$message({
-//              message: '处理成功',
-//              type: 'success'
-//            });
-//            this.query();
-//          }
-//        })
-//      }
+      toReply:function (adviseId) {
+        this.$router.push({path:'/staffMain/staffReply'+adviseId})
+      }
     }
   }
 

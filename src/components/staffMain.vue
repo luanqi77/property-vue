@@ -4,11 +4,11 @@
       <div style="width: 30%;float: left;margin-left: -10px">
         <img src="../assets/index/logo1.png" width="60%"></img>
       </div>
-      <el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>
-      <el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>
+      <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
+      <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
       <span style="margin-left: 250px;font-size: 18px">{{staffName}},您好</span>
       <el-button  round style="font-size: 15px;margin-left: 40px;margin-top: 25px;" @click="loginout()">注销</el-button>
-      <el-button  round style="font-size: 15px;margin-right: -1000px;margin-top: 25px;">个人信息</el-button>
+      <el-button  round style="font-size: 15px;margin-right: -500px;margin-top: 25px;" @click="staffInfo()">个人信息</el-button>
 
     </div>
     <el-container style="height: 900px; border: 1px solid #eee; width: 100%">
@@ -19,7 +19,7 @@
             <template slot="title" ><i class="el-icon-user-solid"></i>权限管理</template>
             <el-menu-item-group>
               <el-menu-item index="1-1"><router-link  to="/staffMain/viewStaff">查看员工</router-link></el-menu-item>
-              <el-menu-item index="1-2"><router-link  to="/staffMain/permissionAssignment">职责分配</router-link></el-menu-item>
+              <!--<el-menu-item index="1-2"><router-link  to="/staffMain/permissionAssignment">职责分配</router-link></el-menu-item>-->
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -34,7 +34,8 @@
             <el-submenu index="3">
             <template slot="title"><i class="el-icon-warning"></i>投诉建议</template>
             <el-menu-item-group>
-              <el-menu-item index="3-1"><router-link  to="/staffMain/replyAdvise">查看及回复</router-link></el-menu-item>
+              <el-menu-item index="3-1"><router-link  to="/staffMain/replyAdvise">查看投诉</router-link></el-menu-item>
+              <el-menu-item index="3-2"><router-link  to="/staffMain/myReply">我的回复</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="4">
@@ -56,6 +57,12 @@
             </el-menu-item-group>
             <el-menu-item-group>
               <el-menu-item index="6-2"><router-link  to="/staffMain/addInformation">便名服务</router-link></el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="7">
+            <template slot="title"><i class="el-icon-truck"></i>车位信息</template>
+            <el-menu-item-group>
+              <el-menu-item index="7-1"><router-link  to="/staffMain/manageParking">管理车位</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -130,8 +137,11 @@
           alert('请输入搜索关键字')
         }else {
             var searchInput=this.searchInput;
-          this.$router.push({path:"/staffMain/searchUser/"+searchInput})
+          this.$router.push({path:"/searchUser/"+searchInput})
         }
+      },
+      staffInfo:function () {
+        this.$router.push({path:"/staffMain/staffInfo"})
       }
     }
   }

@@ -14,6 +14,11 @@ import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
 import searchUser from '@/components/searchUser'
+import staffInfo from '@/components/staffInfo'
+import staffReply from '@/components/staffReply'
+import myReply from '@/components/myReply'
+import insertStaff from '@/components/insertStaff'
+import manageParking from '@/components/manageParking'
 Vue.use(Router)
 
 export default new Router({
@@ -39,9 +44,14 @@ export default new Router({
           component:viewStaff
         },
         {
-          path:'permissionAssignment',
+          path:'permissionAssignment/:staffId',
           name:'permissionAssignment',
           component:permissionAssignment
+        },
+        {
+          path:'staffReply/:adviseId',
+          name:'staffReply',
+          component:staffReply
         },
         {
           path:'propertyAccount',
@@ -84,15 +94,32 @@ export default new Router({
           component:staffMessage
         },
         {
-          path:'searchUser/:searchInput',
-          name:'searchUser',
-          component:searchUser
+          path:'staffInfo',
+          name:'staffInfo',
+          component:staffInfo
         },
+        {
+          path:'myReply',
+          name:'myReply',
+          component:myReply
+        },
+        {
+          path:'insertStaff',
+          name:'insertStaff',
+          component:insertStaff
+        },
+        {
+          path:'manageParking',
+          name:'manageParking',
+          component:manageParking
+        },
+      ],
 
-
-
-
-      ]
-    }
+    },
+    {
+      path:'/searchUser/:searchInput',
+      name:'searchUser',
+      component:searchUser
+    },
   ]
 })

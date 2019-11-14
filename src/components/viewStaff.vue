@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div style="width: 1000px;margin-left: 200px">
-      <span style="font-size: 24px;color: darkgray;
-      margin-left: 0px;height: 50px;line-height: 50px">员工信息</span>
-      <!--<el-button  primary style="font-size: 15px;margin-left: 200px;margin-top: 20px;" @click="loginout()">新增员工</el-button>-->
+    <div style="width: 100%;">
+      <span style="font-size: 20px;color: darkgray;
+      margin:auto;height: 50px;line-height: 50px">员工信息</span>
+
       <el-table
         :data="staff"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
@@ -12,31 +12,34 @@
         <el-table-column
           prop="staffName"
           label="员工姓名"
-          width="200"
+          width="360"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="staffNumber"
           label="员工工号"
-          width="200"
+          width="360"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="staffPermission"
           label="员工职责"
-          width="400"
+          width="360"
           align="center"
         >
         </el-table-column>
         <el-table-column
           label="操作"
-          width="200"
+          width="364"
           align="center"
         >
           <template slot-scope="staff">
-            <el-button type="primary" plain @click="toUserAnswer(staff.row.staffId)">删除</el-button>
+            <el-button type="primary" plain @click="deleteStaff(staff.row.staffId)">删除</el-button>
+          </template>
+          <template slot-scope="staff">
+            <el-button type="primary" plain @click="toUpdtaeStaff(staff.row.staffId)">修改</el-button>
           </template>
         </el-table-column>
 
@@ -49,7 +52,9 @@
         :total="total"
         :current-page="this.params.page">
       </el-pagination>
+
     </div>
+    <el-button  primary style="font-size: 15px;margin-top: 20px;" @click="insertStaff()">新增员工</el-button>
   </div>
 
 
@@ -93,6 +98,33 @@
           this.total=res.data.total;
         })
       },
+      deleteStaff:function (staffId) {
+        this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          var url='/api/deleteStaffById'
+          axios.post(url, {staffId: staffId}).then(res => {
+            if (res.data == 1) {
+              this.query();
+            } else {
+              alert("删除失败")
+            }
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        })
+      },
+      toUpdtaeStaff:function (staffId) {
+        this.$router.push({path:'/staffMain/permissionAssignment/'+staffId})
+      },
+      insertStaff:function () {
+        this.$router.push({path:'/staffMain/insertStaff'})
+      }
     }
   }
 
