@@ -16,6 +16,10 @@ import staffMessage from '@/components/staffMessage'
 import InformationList from '@/components/InformationList'
 import insertInformation from '@/components/insertInformation'
 import updateInformation from '@/components/updateInformation'
+import boardList from '@/components/boardList'
+import insertBoard from '@/components/insertBoard'
+import updateBoard from '@/components/updateBoard'
+
 
 
 import searchUser from '@/components/searchUser'
@@ -107,6 +111,21 @@ export default new Router({
           path:'/updateInformation/:inid',
           name:'updateInformation',
           component:updateInformation
+        },
+        {
+          path:'/boardList',
+          name:'boardList',
+          component:boardList
+        },
+        {
+          path:'/insertBoard',
+          name:'insertBoard',
+          component:insertBoard
+        },
+        {
+          path:'/updateBoard/:boardId',
+          name:'updateBoard',
+          component:updateBoard
         }
 
       ]

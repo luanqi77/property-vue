@@ -2,49 +2,44 @@
   <div>
   <div>
     <el-table
-      :data="informations"
+      :data="board"
       style="width: 100%">
       <el-table-column
-        prop="inid"
+        prop="boardId"
         label="编号"
         width="100">
       </el-table-column>
       <el-table-column
-        prop="description"
-        label="描述"
+        prop="boardDeso"
+        label="公告描述"
         width="300">
       </el-table-column>
       <el-table-column
-        prop="tel"
-        label="电话">
-      </el-table-column>
-      <el-table-column
-        prop="connname"
-        label="姓名"
+        prop="boardTime"
+        label="公告时间"
         :formatter="dateFormat">
       </el-table-column>
       <el-table-column
-        prop="servername"
-        label="服务名称">
+        prop="level"
+        label="等级">
       </el-table-column>
       <el-table-column
-        prop="company"
-        label="公司"
-        width="200">
+        prop="title"
+        label="标题">
       </el-table-column>
-
       <el-table-column label="操作" width="180">
-        <template slot-scope="information">
-          <el-button type="primary" icon="el-icon-edit" circle @click="updateInformation(information.row.inid)"></el-button>
+        <template slot-scope="board">
+          <el-button type="primary" icon="el-icon-edit" circle @click="updateBoard(board.row.boardId)"></el-button>
 
-          <el-button type="danger" icon="el-icon-delete" circle @click="deleteInformation(information.row.inid)"></el-button>
+          <el-button type="danger" icon="el-icon-delete" circle @click="deleteBoard(board.row.boardId)"></el-button>
 
         </template>
       </el-table-column>
+
     </el-table>
   </div>
   <div>
-    <el-button type="success" icon="el-icon-check" circle @click="insertInformation()"></el-button>
+      <el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>
   </div>
   </div>
 </template>
@@ -54,7 +49,7 @@
   export default {
     data() {
       return {
-        informations: []
+        board: []
       }
     },
     mounted(){
@@ -65,18 +60,18 @@
     methods:{
 
       query:function () {
-        var url = 'api/findAllInformation'
+        var url = 'api/findAllBoard'
         axios.get(url).then(res =>{
-          this.informations = res.data;
+          this.board = res.data;
         })
       },
-      updateInformation: function (inid) {
-        this.$router.push({path: '/updateInformation/' + inid})
+      updateBoard: function (boardId) {
+        this.$router.push({path: '/updateBoard/' + boardId})
       },
-      insertInformation:function (){
-        this.$router.push({path:'/insertInformation/'})
+      insertBoard:function (){
+        this.$router.push({path:'/insertBoard/'})
       },
-      deleteInformation:function (inid) {
+      deleteBoard:function (boardId) {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -86,8 +81,8 @@
             type: 'success',
             message: '成功',
           });
-          var url = 'api/deleteInformation'
-          axios.post(url,{inid:inid}).then(res=>{
+          var url = 'api/deleteBoard'
+          axios.post(url,{boardId:boardId}).then(res=>{
             this.query();
           })
         }).catch(() => {
