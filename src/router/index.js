@@ -9,6 +9,7 @@ import propertyAccount from '@/components/propertyAccount'
 import deduct from '@/components/deduct'
 import replyAdvise from '@/components/replyAdvise'
 import selectApply from '@/components/selectApply'
+import selectApplied from '@/components/selectApplied'
 import selectOperate from '@/components/selectOperate'
 import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
@@ -21,9 +22,12 @@ import insertBoard from '@/components/insertBoard'
 import updateBoard from '@/components/updateBoard'
 import ApplyText from '@/components/ApplyText'
 
-
-
 import searchUser from '@/components/searchUser'
+import staffInfo from '@/components/staffInfo'
+import staffReply from '@/components/staffReply'
+import myReply from '@/components/myReply'
+import insertStaff from '@/components/insertStaff'
+import manageParking from '@/components/manageParking'
 Vue.use(Router)
 
 export default new Router({
@@ -49,9 +53,14 @@ export default new Router({
           component:viewStaff
         },
         {
-          path:'permissionAssignment',
+          path:'permissionAssignment/:staffId',
           name:'permissionAssignment',
           component:permissionAssignment
+        },
+        {
+          path:'staffReply/:adviseId',
+          name:'staffReply',
+          component:staffReply
         },
         {
           path:'propertyAccount',
@@ -74,6 +83,11 @@ export default new Router({
           component:selectApply
         },
         {
+          path:'selectApplied',
+          name:'selectApplied',
+          component:selectApplied
+        },
+        {
           path:'selectOperate',
           name:'selectOperate',
           component:selectOperate
@@ -94,9 +108,24 @@ export default new Router({
           component:staffMessage
         },
         {
-          path:'searchUser/:searchInput',
-          name:'searchUser',
-          component:searchUser
+          path:'staffInfo',
+          name:'staffInfo',
+          component:staffInfo
+        },
+        {
+          path:'myReply',
+          name:'myReply',
+          component:myReply
+        },
+        {
+          path:'insertStaff',
+          name:'insertStaff',
+          component:insertStaff
+        },
+        {
+          path:'manageParking',
+          name:'manageParking',
+          component:manageParking
         },
         {
           path:'/InformationList',
@@ -133,8 +162,13 @@ export default new Router({
           name:'ApplyText',
           component:ApplyText
         }
+      ],
 
-      ]
-    }
+    },
+    {
+      path:'/searchUser/:searchInput',
+      name:'searchUser',
+      component:searchUser
+    },
   ]
 })

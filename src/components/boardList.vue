@@ -71,7 +71,7 @@
         this.$router.push({path: '/updateBoard/' + boardId})
       },
       insertBoard:function (){
-        this.$router.push({path:'/insertBoard/'})
+        this.$router.push({path:'/insertBoard'})
       },
       deleteBoard:function (boardId) {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {

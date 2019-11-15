@@ -2,35 +2,49 @@
   <div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
-        :data="operateLog"
+        :data="apply"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
         :row-class-name="tableRowClassName">
         <el-table-column
-          prop="logId"
-          label="序号"
-          width="330"
+          prop="realName"
+          label="业主姓名"
+          width="150"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="operateType"
-          label="操作类型"
-          width="452"
+          prop="applyDeso"
+          label="报修申请"
+          width="502"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="operateTime"
-          label="操作时间"
-          width="330"
+          prop="address"
+          label="房号"
+          width="200"
           align="center"
-          :formatter="dateFormat"
         >
+        </el-table-column>
+          <el-table-column
+            prop="applyTime"
+            label="申请时间"
+            width="200"
+            align="center"
+            :formatter="dateFormat"
+          >
+          </el-table-column>
+            <el-table-column
+              prop="status"
+              label="状态"
+              width="190"
+              align="center"
+            >
         </el-table-column>
         <el-table-column
           prop="staffName"
-          label="操作人"
-          width="330"
+          label="处理人"
+          width="200"
           align="center"
         >
         </el-table-column>
@@ -66,7 +80,7 @@
     components: {ElButton},
     data() {
       return {
-        operateLog:[],
+        apply:[],
         params: {
           page: '1',
           size: '10',
@@ -97,9 +111,9 @@
         this.query();
       },
       query:function () {
-        var url = '/api/operateLogFindAll/'+this.params.page+"/"+this.params.size
+        var url = '/api/applyFindAll/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
-          this.operateLog = res.data.list;
+          this.apply = res.data.list;
           this.total=res.data.total;
         })
       },
@@ -118,6 +132,7 @@
 //            this.query();
 //          }
 //        })
+//
 //      }
     }
   }
