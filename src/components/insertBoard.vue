@@ -27,7 +27,7 @@
   import axios from 'axios'
   export default{
     data(){
-      return{
+      return {
         board: {
           boardId: '',
           boardDeso: '',
@@ -37,15 +37,18 @@
         }
       }
     },
-    methods:{
-      insertBoard2:function(){
+    methods: {
+      insertBoard2: function () {
         var url = "api/insertBoard"
-        axios.post(url,this.board).then(res=>{
-          if (res.data!='0') {
-            this.$router.push({path:"/boardList"})
-          }else {
-            alert("添加失败！")
-          }
+
+          axios.post(url, this.board).then(res => {
+
+            if (res.data != '0') {
+              this.$router.push({path: "/boardList"})
+            } else {
+              alert("添加失败！请正确填写")
+            }
+
         })
       }
     }

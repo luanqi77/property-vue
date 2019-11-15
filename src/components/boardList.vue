@@ -17,7 +17,8 @@
       <el-table-column
         prop="boardTime"
         label="公告时间"
-        :formatter="dateFormat">
+        :formatter="dateFormat"
+        width="240">
       </el-table-column>
       <el-table-column
         prop="level"
@@ -25,7 +26,8 @@
       </el-table-column>
       <el-table-column
         prop="title"
-        label="标题">
+        label="标题"
+        width="250">
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="board">

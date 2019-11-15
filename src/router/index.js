@@ -19,6 +19,7 @@ import updateInformation from '@/components/updateInformation'
 import boardList from '@/components/boardList'
 import insertBoard from '@/components/insertBoard'
 import updateBoard from '@/components/updateBoard'
+import ApplyText from '@/components/ApplyText'
 
 
 
@@ -126,6 +127,11 @@ export default new Router({
           path:'/updateBoard/:boardId',
           name:'updateBoard',
           component:updateBoard
+        },
+        {
+          path:'ApplyText',
+          name:'ApplyText',
+          component:ApplyText
         }
 
       ]
