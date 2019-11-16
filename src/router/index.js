@@ -20,6 +20,7 @@ import updateInformation from '@/components/updateInformation'
 import boardList from '@/components/boardList'
 import insertBoard from '@/components/insertBoard'
 import updateBoard from '@/components/updateBoard'
+import ApplyText from '@/components/ApplyText'
 
 import searchUser from '@/components/searchUser'
 import staffInfo from '@/components/staffInfo'
@@ -27,6 +28,16 @@ import staffReply from '@/components/staffReply'
 import myReply from '@/components/myReply'
 import insertStaff from '@/components/insertStaff'
 import manageParking from '@/components/manageParking'
+
+import userinfo from '@/components/userinfo'
+import pay from '@/components/pay'
+import advise from '@/components/advise'
+import informations from '@/components/informations'
+import apply from '@/components/apply'
+import myhouse from '@/components/myhouse'
+import userupdate from '@/components/userupdate'
+import news from '@/components/news'
+import boardinfo from '@/components/boardinfo'
 Vue.use(Router)
 
 export default new Router({
@@ -155,6 +166,11 @@ export default new Router({
           path:'/updateBoard/:boardId',
           name:'updateBoard',
           component:updateBoard
+        },
+        {
+          path:'ApplyText',
+          name:'ApplyText',
+          component:ApplyText
         }
       ],
 
@@ -164,5 +180,36 @@ export default new Router({
       name:'searchUser',
       component:searchUser
     },
+    {
+      path:'/userinfo',
+      name:'userinfo',
+      component:userinfo,
+      children:[
+        {path:'/userupdate',
+          name:'userupdate',
+          component:userupdate},
+        {path:'/advise',
+          name:'advise',
+          component:advise},
+        {path:'/apply',
+          name:'apply',
+          component:apply},
+        {path:'/myhouse',
+          name:'myhouse',
+          component:myhouse},
+        {path:'/informations',
+          name:'informations',
+          component:informations},
+        {path:'/pay',
+          name:'pay',
+          component:pay},
+        {path:'/news',
+          name:'news',
+          component:news},
+        {path:'/boardinfo/:boardId',
+          name:'boardinfo',
+          component:boardinfo}
+      ]
+    }
   ]
 })
