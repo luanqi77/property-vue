@@ -4,9 +4,11 @@
     margin-left: 350px;margin-top: 50px" >
       <el-form :inline="true" :model="reply" status-icon :rules="rules" class="demo-ruleForm">
         <el-form-item  prop="description" label=" ">
-          <div style="margin-left: -470px;margin-top: 20px">投诉及建议描述：{{advise.description}}</div>
-          <div style="margin-left: -510px " :formatter="dateFormat">投诉时间：{{advise.adviseTime}}</div>
-          <el-input
+          <div>
+            <div style="margin-top: 20px">投诉及建议描述：{{advise.description}}</div>
+            <div style="">投诉时间：{{advise.adviseTime.substr(0,10)}}</div>
+          </div>
+            <el-input
             type="textarea"
             style="border-radius: 4px; margin-left: auto;margin-top: 30px;
               height: 250px;width: 600px; font-size: 16px"
@@ -16,8 +18,8 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm()" style="margin-top: 0px;height: 40px;width: 100px">提交</el-button>
-          <el-button @click="cancle()" style="width: 80px;text-align: center">取消</el-button>
+          <el-button type="primary" round @click="submitForm()" style="margin-top: 0px;height: 40px;width: 100px">提交</el-button>
+          <el-button type="warning" round @click="cancle()" style="width: 80px;width: 100px;text-align: center">取消</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -38,7 +40,8 @@
           },
           advise:{
               description:'',
-              adviseTime:''
+              adviseTime:'',
+              adviseId:''
           },
         rules:{
           reply: [
@@ -51,11 +54,15 @@
     },
 
     mounted(){
-
+      var adviseId=this.$route.params.adviseId
+        var url='api/selectAdviseByAdviseId'
+        axios.post(url,{adviseId:adviseId}).then(res=>{
+            this.advise=res.data;
+        })
     },
     methods:{
       dateFormat:function(row,column){
-        var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        var t=new Date(row.adviseTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
       submitForm:function () {

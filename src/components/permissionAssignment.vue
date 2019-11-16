@@ -20,6 +20,7 @@
         </el-form-item><br>
         <el-form-item>
           <el-button type="primary" @click="submitForm()" style="">确认修改</el-button>
+          <el-button type="danger" @click="updateStaffPassword()" style="">重置密码</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -53,7 +54,8 @@
     },
     methods:{
       submitForm:function () {
-          axios.get(url,this.staff).then(res=>{
+          var url='api/updateStaff'
+          axios.post(url,this.staff).then(res=>{
             if (res.data=="ok") {
               this.$message({
                 message: '修改成功',
@@ -61,9 +63,23 @@
               });
               this.$router.push({path:'/staffMain/viewStaff'})
             }else {
-              this.$message.error('添加失败')
+              this.$message.error('修改失败')
             }
           })
+      },
+      updateStaffPassword:function () {
+        var staffId=this.$route.params.staffId;
+        var url='api/updateStaff/'+this.staffNumber
+        axios.post(url).then(res=>{
+          if (res.data=="ok") {
+            this.$message({
+              message: '重置成功',
+              type: 'success'
+            });
+          }else {
+            this.$message.error('重置失败')
+          }
+        })
       }
     }
   }

@@ -54,7 +54,7 @@
       </el-pagination>
 
     </div>
-    <el-button  primary style="font-size: 15px;margin-top: 20px;" @click="insertStaff()">新增员工</el-button>
+    <el-button  type="primary" round style="font-size: 15px;margin-top: 20px;" @click="insertStaff()">新增员工</el-button>
   </div>
 
 

@@ -6,9 +6,16 @@
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
         :row-class-name="tableRowClassName">
         <el-table-column
+          prop="adviseId"
+          label="序号"
+          width="200"
+          align="center"
+        >
+        </el-table-column>
+        <el-table-column
           prop="description"
           label="业主投诉"
-          width="679"
+          width="480"
           align="center"
         >
         </el-table-column>
@@ -21,6 +28,7 @@
         >
         </el-table-column>
         <el-table-column
+          :formatter="formatRole"
           prop="status"
           label="状态"
           width="200"
@@ -33,7 +41,7 @@
           align="center"
         >
           <template slot-scope="advise">
-            <el-button type="primary" plain @click="toReply(advise.row.adviseId)">回复</el-button>
+            <el-button type="primary" round @click="toReply(advise.row.adviseId)">回复</el-button>
           </template>
         </el-table-column>
 
@@ -59,16 +67,11 @@
     data() {
       return {
         advise:[],
+        total: '0',
         params: {
           page: '1',
           size: '10',
         }
-//          advise:{
-//            adviseId:'',
-//            adviseTime:'',
-//            description:'',
-//            status:''
-//          }
       }
     },
 
@@ -96,12 +99,20 @@
         })
       },
       dateFormat:function(row,column){
-        var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        var t=new Date(row.adviseTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
       toReply:function (adviseId) {
-        this.$router.push({path:'/staffMain/staffReply'+adviseId})
-      }
+        this.$router.push({path:'/staffMain/staffReply/'+adviseId})
+      },
+      formatRole(row,column){
+        if(row.number){
+          let len = row.number.toString().length
+          return row.number = len > 8 ? row.number.toString().slice(len-8) : row.number;
+        }else{
+          return null;
+        }
+      },
     }
   }
 

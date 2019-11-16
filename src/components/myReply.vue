@@ -2,7 +2,7 @@
   <div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
-        :data="reply"
+        :data="adviseAndReply"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
         :row-class-name="tableRowClassName">
         <el-table-column
@@ -33,7 +33,7 @@
           label="回复时间"
           width="222"
           align="center"
-          :formatter="dateFormat"
+          :formatter="dateFormats"
         >
         </el-table-column>
 
@@ -58,7 +58,8 @@
     components: {ElButton},
     data() {
       return {
-        reply:[],
+        adviseAndReply:[],
+          total:'0',
         params: {
           page: '1',
           size: '10',
@@ -89,14 +90,18 @@
         this.query();
       },
       query:function () {
-        var url = '/api/adviseFindAll/'+this.params.page+"/"+this.params.size
+        var url = '/api/selectReplyByStaffId/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
-          this.advise = res.data.list;
-          this.total=res.data.total;
+          this.adviseAndReply = res.data.list;
+          this.total=res.data.totalCount;
         })
       },
       dateFormat:function(row,column){
-        var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        var t=new Date(row.adviseTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
+      },
+      dateFormats:function(row,column){
+        var t=new Date(row.replyTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
       toReply:function (adviseId) {

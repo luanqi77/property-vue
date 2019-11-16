@@ -7,8 +7,8 @@
       <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
       <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
       <span style="margin-left: 250px;font-size: 18px">{{staffName}},您好</span>
-      <el-button  round style="font-size: 15px;margin-left: 40px;margin-top: 25px;" @click="loginout()">注销</el-button>
-      <el-button  round style="font-size: 15px;margin-right: -500px;margin-top: 25px;" @click="staffInfo()">个人信息</el-button>
+      <el-button type="danger" round style="font-size: 15px;margin-left: 40px;margin-top: 25px;" @click="loginout()">注销</el-button>
+      <el-button type="primary" round style="font-size: 15px;margin-right: -500px;margin-top: 25px;" @click="staffInfo()">个人信息</el-button>
 
     </div>
     <el-container style="height: 900px; border: 1px solid #eee; width: 100%">

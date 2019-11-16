@@ -8,9 +8,9 @@
         <el-form-item label="员工工号">
           <el-input v-model="staff.staffNumber" @blur="checkstaffNumber()"></el-input>
         </el-form-item><br>
-        <el-form-item label="员工密码">
-          <el-input type="password" v-model="staff.password" placeholder="默认为123456"></el-input>
-        </el-form-item><br>
+        <!--<el-form-item label="员工密码">-->
+          <!--<el-input type="password" v-model="staff.password" placeholder="默认为123456"></el-input>-->
+        <!--</el-form-item><br>-->
         <el-form-item label="员工职责" >
           <el-select  v-model="staff.roleId"  style="float: left;width: 420px" @blur="checkStaffRoleId()">
             <el-option
@@ -22,7 +22,7 @@
           </el-select>
         </el-form-item><br>
         <el-form-item>
-          <el-button type="primary" @click="submitForm()" style="">提交</el-button>
+          <el-button type="primary" round @click="submitForm()" style="">提交</el-button>
         </el-form-item>
       </el-form>
     </div>
