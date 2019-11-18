@@ -42,6 +42,14 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="this.params.size"
+      v-on:current-change="changePage"
+      :total="total"
+      :current-page="this.params.page">
+    </el-pagination>
   </div>
   <div>
     <el-button type="success" icon="el-icon-check" circle @click="insertInformation()"></el-button>
@@ -54,7 +62,12 @@
   export default {
     data() {
       return {
-        informations: []
+        informations: [],
+        params:{
+            page:'1',
+            size:'3',
+        },
+        total:""
       }
     },
     mounted(){
@@ -65,10 +78,16 @@
     methods:{
 
       query:function () {
-        var url = 'api/findAllInformation'
+        var url = 'api/findAllInformationBypage/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res =>{
-          this.informations = res.data;
+          this.informations = res.data.list;
+          this.total=res.data.total;
         })
+      },
+      changePage: function (page) {
+        this.params.page = page
+        this.query();
+
       },
       updateInformation: function (inid) {
         this.$router.push({path: '/updateInformation/' + inid})

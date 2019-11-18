@@ -39,6 +39,14 @@
       </el-table-column>
 
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="this.params.size"
+      v-on:current-change="changePage"
+      :total="total"
+      :current-page="this.params.page">
+    </el-pagination>
   </div>
   <div>
       <el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>
@@ -51,7 +59,12 @@
   export default {
     data() {
       return {
-        board: []
+        board: [],
+        params:{
+          page:'1',
+          size:'3',
+        },
+        total:""
       }
     },
     mounted(){
@@ -62,9 +75,10 @@
     methods:{
 
       query:function () {
-        var url = 'api/findAllBoard'
+        var url = 'api/findAllBoardBypage/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res =>{
-          this.board = res.data;
+          this.board = res.data.list;
+          this.total=res.data.total;
         })
       },
       updateBoard: function (boardId) {
