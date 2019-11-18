@@ -81,6 +81,11 @@
           this.total=res.data.total;
         })
       },
+      changePage: function (page) {
+        this.params.page = page
+        this.query();
+
+      },
       updateBoard: function (boardId) {
         this.$router.push({path: '/updateBoard/' + boardId})
       },
