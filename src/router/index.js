@@ -38,6 +38,8 @@ import myhouse from '@/components/myhouse'
 import userupdate from '@/components/userupdate'
 import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
+import informationinfo from '@/components/informationinfo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -194,7 +196,7 @@ export default new Router({
         {path:'/apply',
           name:'apply',
           component:apply},
-        {path:'/myhouse',
+        {path:'/myhouse/:userid',
           name:'myhouse',
           component:myhouse},
         {path:'/informations',
@@ -208,7 +210,10 @@ export default new Router({
           component:news},
         {path:'/boardinfo/:boardId',
           name:'boardinfo',
-          component:boardinfo}
+          component:boardinfo},
+        {path:'/informationinfo/:inid',
+          name:'informationinfo',
+          component:informationinfo}
       ]
     }
   ]
