@@ -31,9 +31,9 @@
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template slot-scope="board">
-          <el-button type="primary" icon="el-icon-edit" circle @click="updateBoard(board.row.boardId)"></el-button>
+          <el-button type="primary"  plain @click="updateBoard(board.row.boardId)">修改</el-button>
 
-          <el-button type="danger" icon="el-icon-delete" circle @click="deleteBoard(board.row.boardId)"></el-button>
+          <el-button type="danger"  plain @click="deleteBoard(board.row.boardId)">删除</el-button>
 
         </template>
       </el-table-column>
@@ -49,7 +49,8 @@
     </el-pagination>
   </div>
   <div>
-      <el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>
+      <!--<el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>-->
+      <el-button type="success" plain @click="insertBoard()">新增</el-button>
   </div>
   </div>
 </template>
