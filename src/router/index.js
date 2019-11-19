@@ -11,7 +11,6 @@ import replyAdvise from '@/components/replyAdvise'
 import selectApply from '@/components/selectApply'
 import selectApplied from '@/components/selectApplied'
 import selectOperate from '@/components/selectOperate'
-import noPermission from '@/components/noPermission'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
 import InformationList from '@/components/InformationList'
@@ -42,9 +41,8 @@ import myhouse from '@/components/myhouse'
 import userupdate from '@/components/userupdate'
 import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
-import updateUserMessage from '@/components/updateUserMessage'
-import insertUserMessage from '@/components/insertUserMessage'
 import informationinfo from '@/components/informationinfo'
+import noPermission from '@/components/noPermission'
 
 Vue.use(Router)
 
@@ -56,9 +54,29 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/userReister',
+      name: 'userReister',
+      component: userReister
+    },
+    {
+      path: '/binding',
+      name: 'binding',
+      component: binding
+    },
+    {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/getword',
+      name: 'getword',
+      component: getword
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path:"/staffMain",
@@ -109,11 +127,6 @@ export default new Router({
           path:'selectOperate',
           name:'selectOperate',
           component:selectOperate
-        },
-        {
-          path:'addBoard',
-          name:'addBoard',
-          component:addBoard
         },
         {
           path:'addInformation',
@@ -179,6 +192,11 @@ export default new Router({
           path:'ApplyText',
           name:'ApplyText',
           component:ApplyText
+        },
+        {
+          path:'noPermission',
+          name:'noPermission',
+          component:noPermission
         }
       ],
 
@@ -202,7 +220,7 @@ export default new Router({
         {path:'/apply',
           name:'apply',
           component:apply},
-        {path:'/myhouse',
+        {path:'/myhouse/:userid',
           name:'myhouse',
           component:myhouse},
         {path:'/informations',
@@ -216,8 +234,12 @@ export default new Router({
           component:news},
         {path:'/boardinfo/:boardId',
           name:'boardinfo',
-          component:boardinfo}
+          component:boardinfo},
+        {path:'/informationinfo/:inid',
+          name:'informationinfo',
+          component:informationinfo}
       ]
     }
   ]
 })
+

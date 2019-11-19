@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;height:3000px;margin: auto;margin-top: -50px">
+  <div style="width: 100%;height:3000px;margin: auto;">
     <div style="width: 100%;margin: auto;height: 118px;background-color: black">
       <div style="width: 30%;float: left;margin-left: 50px">
         <img src="../assets/index/logo1.png" width="60%"></img>
@@ -124,7 +124,7 @@
     },
     methods:{
       login:function () {
-        this.$router.push({path:"/staffMain/staffMessage"})
+          this.$router.push({path:'/login'})
       }
     }
   }

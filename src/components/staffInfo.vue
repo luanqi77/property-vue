@@ -15,7 +15,7 @@
           <el-input type="password" v-model="staff.checkPass" autocomplete="off"></el-input>
         </el-form-item><br>
         <el-form-item>
-          <el-button type="primary" @click="submitForm()" style="margin-left: 100px">确认修改</el-button>
+          <el-button type="primary" @click="submitForm()" style="margin-left: 140px">确认修改</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -70,7 +70,6 @@
         //得到员工信息
         var url='api/getCurrentStaff'
       axios.get(url).then(res=>{
-        alert(res.data)
         this.staff=res.data;
       })
     },
@@ -80,7 +79,7 @@
         axios.post(url,this.staff).then(res=>{
           if (res.data=="success"){
             alert('修改成功，请重新登录')
-            this.$router.push({path:"/index"})
+            this.$router.push({path:"/login"})
           }else {
             this.$message.error('修改失败');
           }
