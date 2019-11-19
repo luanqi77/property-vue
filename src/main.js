@@ -7,8 +7,10 @@ import App from './App.vue';
 import router from './router'
 import Axios from 'axios'
 
+Vue.use(router);
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+// import './assets/css/base.css'
 Vue.prototype.$axios=Axios
 /* eslint-disable no-new */
 new Vue({

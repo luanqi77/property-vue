@@ -27,6 +27,10 @@ import staffReply from '@/components/staffReply'
 import myReply from '@/components/myReply'
 import insertStaff from '@/components/insertStaff'
 import manageParking from '@/components/manageParking'
+import login from '@/components/login'
+import getword from '@/components/getword'
+import userReister from '@/components/userReister'
+import binding from '@/components/binding'
 Vue.use(Router)
 
 export default new Router({
@@ -37,9 +41,29 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/userReister',
+      name: 'userReister',
+      component: userReister
+    },
+    {
+      path: '/binding',
+      name: 'binding',
+      component: binding
+    },
+    {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/getword',
+      name: 'getword',
+      component: getword
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path:"/staffMain",
