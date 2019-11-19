@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%">
     <el-input type="text" v-model="params.searchInput"placeholder="输入用户关键信息"
-              style="width: 300px;margin-top: 30px"></el-input>
+              style="width: 300px;margin-top: 30px;margin-left: 35%"></el-input>
     <el-button style="width: 70px;text-align: center;margin-left: -4px;
     margin-top: -40px;margin-bottom: 5px" type="primary" @click="search()">搜索</el-button>
 
@@ -40,7 +40,7 @@
       </el-table-column>
       <el-table-column
       label="操作"
-      width="300"
+      width="360"
       align="center"
       >
       <template slot-scope="staff">
@@ -55,15 +55,18 @@
       </el-table-column>
     </el-table>
     <br/>
+    <div style="margin-left: 50%">
     <el-pagination
       background
       layout="prev, pager, next"
       :page-size="this.params.size"
       v-on:current-change="changePage"
       :total="total"
-      :current-page="this.params.page">
+      :current-page="this.params.page"
+      >
     </el-pagination>
     <el-button  type="primary" round style="font-size: 15px;margin-top: 20px;" @click="insertUser()">新增用户</el-button>
+    </div>
   </div>
 
 

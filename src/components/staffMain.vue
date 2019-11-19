@@ -1,12 +1,12 @@
 <template>
-  <div style="margin-top: -60px">
+  <div style="">
     <div style="width: 100%;margin: auto;height: 110px;background-color: rgb(238, 241, 246)">
-      <div style="width: 30%;float: left;margin-left: -10px">
+      <div style="width: 30%;float: left;margin-left: 0px">
         <img src="../assets/index/logo1.png" width="60%"></img>
       </div>
       <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
       <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
-      <span style="margin-left: 250px;font-size: 18px">{{Staff.staffName}},您好</span>
+      <span style="margin-left: 950px;font-size: 18px">{{Staff.staffName}},您好</span>
       <el-button type="danger" round style="font-size: 15px;margin-left: 40px;margin-top: 35px;" @click="loginout()">注销</el-button>
       <el-button type="primary" round style="font-size: 15px;margin-right: -600px;margin-top: 35px;" @click="staffInfo()">个人信息</el-button>
 

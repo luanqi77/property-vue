@@ -56,29 +56,9 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/userReister',
-      name: 'userReister',
-      component: userReister
-    },
-    {
-      path: '/binding',
-      name: 'binding',
-      component: binding
-    },
-    {
       path: '/index',
       name: 'index',
       component: index
-    },
-    {
-      path: '/getword',
-      name: 'getword',
-      component: getword
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: login
     },
     {
       path:"/staffMain",
@@ -131,9 +111,9 @@ export default new Router({
           component:selectOperate
         },
         {
-          path:'noPermission',
-          name:'noPermission',
-          component:noPermission
+          path:'addBoard',
+          name:'addBoard',
+          component:addBoard
         },
         {
           path:'addInformation',
@@ -199,17 +179,7 @@ export default new Router({
           path:'ApplyText',
           name:'ApplyText',
           component:ApplyText
-        },
-        {
-          path:'updateUserMessage/:id',
-          name:'updateUserMessage',
-          component:updateUserMessage
-        },
-        {
-          path:'insertUserMessage',
-          name:'insertUserMessage',
-          component:insertUserMessage
-        },
+        }
       ],
 
     },
@@ -232,7 +202,7 @@ export default new Router({
         {path:'/apply',
           name:'apply',
           component:apply},
-        {path:'/myhouse/:userid',
+        {path:'/myhouse',
           name:'myhouse',
           component:myhouse},
         {path:'/informations',
@@ -246,10 +216,7 @@ export default new Router({
           component:news},
         {path:'/boardinfo/:boardId',
           name:'boardinfo',
-          component:boardinfo},
-        {path:'/informationinfo/:inid',
-          name:'informationinfo',
-          component:informationinfo}
+          component:boardinfo}
       ]
     }
   ]
