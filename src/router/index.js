@@ -31,6 +31,7 @@ import login from '@/components/login'
 import getword from '@/components/getword'
 import userReister from '@/components/userReister'
 import binding from '@/components/binding'
+import updateUserMessage from '@/components/updateUserMessage'
 
 import userinfo from '@/components/userinfo'
 import pay from '@/components/pay'
@@ -43,6 +44,7 @@ import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
 import informationinfo from '@/components/informationinfo'
 import noPermission from '@/components/noPermission'
+import insertUserMessage from '@/components/insertUserMessage'
 
 Vue.use(Router)
 
@@ -197,6 +199,16 @@ export default new Router({
           path:'noPermission',
           name:'noPermission',
           component:noPermission
+        },
+        {
+          path:'insertUserMessage',
+          name:'insertUserMessage',
+          component:insertUserMessage
+        },
+        {
+          path:'updateUserMessage/:id',
+          name:'updateUserMessage',
+          component:updateUserMessage
         }
       ],
 

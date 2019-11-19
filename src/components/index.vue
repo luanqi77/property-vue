@@ -96,8 +96,10 @@
   import axios from 'axios'
   import ElImage from "../../node_modules/element-ui/packages/image/src/main";
   import ElButton from "../../node_modules/element-ui/packages/button/src/button";
+  import ElLink from "../../node_modules/element-ui/packages/link/src/main";
   export default {
     components: {
+      ElLink,
       ElButton,
       ElImage},
     name: 'HelloWorld',

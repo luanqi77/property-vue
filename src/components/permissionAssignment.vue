@@ -89,16 +89,22 @@
       },
       updateStaffPassword:function () {
         var staffId=this.$route.params.staffId;
-        var url='api/resetPassword?staffNumber='+this.staffNumber
+        var url='api/resetStaffPassword?staffNumber='+this.staff.staffNumber
         axios.post(url).then(res=>{
-          if (res.data=="ok") {
-            this.$message({
-              message: '重置成功',
-              type: 'success'
-            });
-          }else {
-            this.$message.error('重置失败')
-          }
+            if(res.data=="未登录"){
+                alert("未登录")
+              this.$router.push({path:'/login'})
+            }else {
+              if (res.data=="success") {
+                this.$message({
+                  message: '重置成功',
+                  type: 'success'
+                });
+                this.$router.push({path:'/staffMain/viewStaff'})
+              }else {
+                this.$message.error('重置失败')
+              }
+            }
         })
       }
     }

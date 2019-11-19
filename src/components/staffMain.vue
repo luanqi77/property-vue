@@ -6,7 +6,7 @@
       </div>
       <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
       <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
-      <span style="margin-left: 950px;font-size: 18px">{{Staff.staffName}},您好</span>
+      <span style="margin-left: 300px;font-size: 18px">{{Staff.staffName}},您好</span>
       <el-button type="danger" round style="font-size: 15px;margin-left: 40px;margin-top: 35px;" @click="loginout()">注销</el-button>
       <el-button type="primary" round style="font-size: 15px;margin-right: -600px;margin-top: 35px;" @click="staffInfo()">个人信息</el-button>
 
@@ -118,7 +118,6 @@
        var url="api/getCurrentStaff"
         axios.get(url).then(res=>{
             this.Staff=res.data;
-            alert(res.data)
             console.log(res.data)
         })
       },
@@ -135,7 +134,7 @@
               });
               this.$router.push({path:"/index"})
             }else {
-                alert("网络不佳")
+              this.$router.push({path:"/index"})
             }
         })
       },

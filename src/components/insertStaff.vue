@@ -14,10 +14,10 @@
         <el-form-item label="员工职责" >
           <el-select  v-model="staff.roleId"  style="float: left;width: 420px" @blur="checkStaffRoleId()">
             <el-option
-              v-for="role in roles"
-              :key="role.roleId"
-              :label="role.roleName"
-              :value="role.roleId"
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
             ></el-option>
           </el-select>
         </el-form-item><br>
@@ -44,21 +44,36 @@
               staffNumber:'',
               password:''
 
-          }
+          },
+        options: [{
+          value: '1',
+          label: '超管，拥有全部权限'
+        }, {
+          value: '2',
+          label: '拥有用户账户管理、查看维修申请、用户、车位、房屋数据操作的权限'
+        }, {
+          value: '3',
+          label: '数据管理，对用户、车位、房屋数据进行操作的权限'
+        }, {
+          value: '4',
+          label: '网站信息运维，可对网站的展示信息进行管理'
+        }],
+        value: ''
       }
     },
 
     mounted(){
-      var url='api/selectRoles'
-      axios.post(url).then(res=>{
-          this.roles=res.data;
-      })
+//      var url='api/selectRoles'
+//      axios.post(url).then(res=>{
+//          this.roles=res.data;
+//      })
     },
     methods:{
       submitForm:function () {
-        var url='api/insertStaff'
+          alert(this.staff.roleId)
+        var url='api/insertStaff?roleId='+this.staff.roleId
         axios.post(url,this.staff).then(res=>{
-          if (res.data=="ok") {
+          if (res.data=="success") {
             this.$message({
               message: '添加成功',
               type: 'success'

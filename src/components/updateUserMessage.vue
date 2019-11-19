@@ -47,7 +47,7 @@
           axios.post(url,this.user).then(res=>{
             if (res.data=="未登录"){
                 alert("请您登陆")
-              this.$router.push({path:'/index'})
+              this.$router.push({path:'/login'})
             }
             if (res.data=="success") {
               this.$message({
@@ -56,7 +56,7 @@
               });
               this.$router.push({path:'/staffMain/propertyAccount'})
             }else {
-              this.$message.error('修改失败')
+              this.$message.error(res.data)
             }
           })
       },

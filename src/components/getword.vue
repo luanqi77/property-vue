@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-  import '@/assets/css/base.css';
+  //import '@/assets/css/base.css';
   import axios from 'axios'
 //import $ from "jquery";
 //import wx from "weixin-js-sdk";

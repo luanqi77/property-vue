@@ -36,10 +36,8 @@
           align="center"
         >
           <template slot-scope="staff">
-            <el-button type="primary" plain @click="deleteStaff(staff.row.staffId)">删除</el-button>
-          </template>
-          <template slot-scope="staff">
-            <el-button type="primary" plain @click="toUpdtaeStaff(staff.row.staffId)">修改</el-button>
+            <el-button type="danger" round @click="deleteStaff(staff.row.staffId)">删除</el-button>
+            <el-button type="primary" round @click="toUpdtaeStaff(staff.row.staffId)">修改</el-button>
           </template>
         </el-table-column>
 
