@@ -11,7 +11,7 @@ import replyAdvise from '@/components/replyAdvise'
 import selectApply from '@/components/selectApply'
 import selectApplied from '@/components/selectApplied'
 import selectOperate from '@/components/selectOperate'
-import addBoard from '@/components/addBoard'
+import noPermission from '@/components/noPermission'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
 import InformationList from '@/components/InformationList'
@@ -38,6 +38,8 @@ import myhouse from '@/components/myhouse'
 import userupdate from '@/components/userupdate'
 import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
+import updateUserMessage from '@/components/updateUserMessage'
+import insertUserMessage from '@/components/insertUserMessage'
 Vue.use(Router)
 
 export default new Router({
@@ -103,9 +105,9 @@ export default new Router({
           component:selectOperate
         },
         {
-          path:'addBoard',
-          name:'addBoard',
-          component:addBoard
+          path:'noPermission',
+          name:'noPermission',
+          component:noPermission
         },
         {
           path:'addInformation',
@@ -171,7 +173,17 @@ export default new Router({
           path:'ApplyText',
           name:'ApplyText',
           component:ApplyText
-        }
+        },
+        {
+          path:'updateUserMessage/:id',
+          name:'updateUserMessage',
+          component:updateUserMessage
+        },
+        {
+          path:'insertUserMessage',
+          name:'insertUserMessage',
+          component:insertUserMessage
+        },
       ],
 
     },

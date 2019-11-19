@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <div style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12);width:715px;height: 500px;
-    margin-left: 350px;margin-top: 50px" >
+  <div style="width: 100%">
+    <div style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12);width:800px;height: 600px;
+    margin-left: 50%;margin-top: 50px" >
       <el-form :inline="true" :model="reply" status-icon :rules="rules" class="demo-ruleForm">
         <el-form-item  prop="description" label=" ">
           <div>
-            <div style="margin-top: 20px">投诉及建议描述：{{advise.description}}</div>
-            <div style="">投诉时间：{{advise.adviseTime.substr(0,10)}}</div>
+            <div style="margin-top: 10px;width: 500px;font-size: 18px;word-wrap: break-word;margin-left: 8%">投诉及建议描述：{{advise.description}}</div>
+            <div style="font-size: 16px;width: 500px;;margin-left: 8%">投诉时间：{{advise.adviseTime.substr(0,10)}}</div>
           </div>
             <el-input
             type="textarea"
-            style="border-radius: 4px; margin-left: auto;margin-top: 30px;
+            style="border-radius: 4px; margin-left: 0%;margin-top: 50px;
               height: 250px;width: 600px; font-size: 16px"
             :rows="8"
             placeholder="请输入您的回复，帮助该业主解决问题(至少输入10个字)"
@@ -66,10 +66,14 @@
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
       submitForm:function () {
-        var url='api/replyAdvise'
+        var url='api/insertReply'
         this.reply.adviseId=this.$route.params.adviseId
         axios.post(url,this.reply).then(res=>{
-          if (res.data != '0') {
+          if (res.data=='未登录'){
+            alert("请您先去登录！")
+            this.$router.push({path:'/index'})
+          }else {
+          if (res.data =='success') {
             const h = this.$createElement;
             this.$notify({
               title: '回复成功',
@@ -80,7 +84,11 @@
           } else {
             this.$message.error('回复失败，请稍后重试')
           }
+          }
         })
+      },
+      cancle:function () {
+        this.$router.push({path:'/staffMain/myReply'})
       }
     }
   }

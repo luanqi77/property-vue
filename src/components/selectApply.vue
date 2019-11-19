@@ -60,6 +60,7 @@
         </el-table-column>
 
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
@@ -81,16 +82,11 @@
     data() {
       return {
         apply:[],
+        total:'',
         params: {
           page: '1',
           size: '10',
         }
-//          advise:{
-//            adviseId:'',
-//            adviseTime:'',
-//            description:'',
-//            status:''
-//          }
       }
     },
 

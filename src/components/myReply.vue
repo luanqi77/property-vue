@@ -8,14 +8,14 @@
         <el-table-column
           prop="description"
           label="业主投诉"
-          width="500"
+          width="600"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="replyDeso"
           label="我的回复"
-          width="500"
+          width="580"
           align="center"
         >
         </el-table-column>
@@ -38,6 +38,7 @@
         </el-table-column>
 
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
@@ -64,12 +65,6 @@
           page: '1',
           size: '10',
         }
-//          advise:{
-//            adviseId:'',
-//            adviseTime:'',
-//            description:'',
-//            status:''
-//          }
       }
     },
 
@@ -92,8 +87,13 @@
       query:function () {
         var url = '/api/selectReplyByStaffId/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
-          this.adviseAndReply = res.data.list;
-          this.total=res.data.totalCount;
+          if(res.data=="未登录"){
+            alert("请您先去登录！")
+            this.$router.push({path:'/index'})
+          }else {
+            this.adviseAndReply = res.data.list;
+            this.total=res.data.totalCount;
+          }
         })
       },
       dateFormat:function(row,column){
@@ -111,3 +111,12 @@
   }
 
 </script>
+<style>
+  .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>

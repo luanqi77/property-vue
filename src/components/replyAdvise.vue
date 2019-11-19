@@ -15,7 +15,7 @@
         <el-table-column
           prop="description"
           label="业主投诉"
-          width="480"
+          width="657"
           align="center"
         >
         </el-table-column>
@@ -28,13 +28,23 @@
         >
         </el-table-column>
         <el-table-column
-          :formatter="formatRole"
           prop="status"
           label="状态"
           width="200"
           align="center"
         >
         </el-table-column>
+        <!--<el-table-column-->
+          <!--prop="status"-->
+          <!--label="状态"-->
+          <!--width="200"-->
+          <!--align="center"-->
+        <!--&gt;-->
+          <!--<template slot-scope="advise">-->
+            <!--<i v-if="advise.row.status===2">已回复</i>-->
+            <!--<i v-else="advise.row.status===1">未回复</i>-->
+          <!--</template>-->
+        <!--</el-table-column>-->
         <el-table-column
           label="操作"
           width="364"
@@ -46,6 +56,7 @@
         </el-table-column>
 
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
@@ -94,8 +105,14 @@
       query:function () {
         var url = '/api/adviseFindAll/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
-          this.advise = res.data.list;
-          this.total=res.data.total;
+            if(res.data=="未登录"){
+                alert("请您先去登录！")
+              this.$router.push({path:'/index'})
+            }else {
+              this.advise = res.data.list;
+              this.total=res.data.total;
+            }
+
         })
       },
       dateFormat:function(row,column){
@@ -106,11 +123,12 @@
         this.$router.push({path:'/staffMain/staffReply/'+adviseId})
       },
       formatRole(row,column){
-        if(row.number){
-          let len = row.number.toString().length
-          return row.number = len > 8 ? row.number.toString().slice(len-8) : row.number;
+          console.log(this.advise)
+        if(row.status=="2"){
+            alert(row.status)
+          return row.status ="未回复";
         }else{
-          return null;
+          return row.status ="已回复";
         }
       },
     }

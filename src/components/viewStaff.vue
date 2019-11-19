@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     <div style="width: 100%;">
       <span style="font-size: 20px;color: darkgray;
       margin:auto;height: 50px;line-height: 50px">员工信息</span>
@@ -10,29 +10,29 @@
         :row-class-name="tableRowClassName">
 
         <el-table-column
-          prop="staffName"
+          prop="realName"
           label="员工姓名"
-          width="360"
+          width="380"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="staffNumber"
           label="员工工号"
-          width="360"
+          width="380"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="staffPermission"
+          prop="roleName"
           label="员工职责"
-          width="360"
+          width="380"
           align="center"
         >
         </el-table-column>
         <el-table-column
           label="操作"
-          width="364"
+          width="420"
           align="center"
         >
           <template slot-scope="staff">
@@ -44,6 +44,7 @@
         </el-table-column>
 
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
@@ -70,7 +71,8 @@
         params: {
           page: '1',
           size: '10',
-        }
+        },
+        staffName:'',
       }
     },
 
@@ -92,9 +94,9 @@
         this.query();
       },
       query:function () {
-        var url = '/api/staffFindAll/'+this.params.page+"/"+this.params.size
-        axios.get(url).then(res => {
-          this.staff = res.data.list;
+        var url = '/api/findStaff'
+        axios.post(url,{currentPage:this.params.page,pageSize:this.params.size}).then(res => {
+          this.staff = res.data.staffs;
           this.total=res.data.total;
         })
       },

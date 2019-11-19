@@ -1,5 +1,16 @@
 <template>
   <div>
+    <div class="block" style="margin-top: 20px">
+      <span class="demonstration">查询日期 :</span>
+      <el-date-picker
+        v-model="value2"
+        type="datetime"
+        placeholder="选择日期时间"
+        align="right"
+        :picker-options="pickerOptions">
+      </el-date-picker>
+      <el-button type="primary" @click="selectLog()" >搜索</el-button>
+    </div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
         :data="operateLog"
@@ -46,6 +57,7 @@
         <!--</el-table-column>-->
 
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
@@ -70,13 +82,33 @@
         params: {
           page: '1',
           size: '10',
-        }
-//          advise:{
-//            adviseId:'',
-//            adviseTime:'',
-//            description:'',
-//            status:''
-//          }
+        },
+        pickerOptions: {
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '昨天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '一周前',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
+        },
+        value2: '',
+
+
+
       }
     },
 
@@ -107,18 +139,12 @@
         var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
-//      applied:function (applyId) {
-//        var url='api/updateApplyStatus'
-//        axios.get(url,{applyId:applyId}).then(res=>{
-//          if (res.data=="ok") {
-//            this.$message({
-//              message: '处理成功',
-//              type: 'success'
-//            });
-//            this.query();
-//          }
-//        })
-//      }
+      selectLog:function () {
+        var url='api/selectLog'
+        axios.post(url,{logTime:this.value2}).then(res=>{
+          alert(res.data)
+        })
+      }
     }
   }
 
