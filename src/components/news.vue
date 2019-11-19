@@ -117,7 +117,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
   .el-form-item__label{
     color: black;
     font-size: 16px;
