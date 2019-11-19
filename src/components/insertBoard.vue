@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <el-form :inline="true" :model="board" class="demo-form-inline">
+  <div style="width: 80%;height: 600px;margin: auto">
+  <div style="margin-left: 400px;width: 100%">
+    <el-form :inline="true" :model="board" class="demo-form-inline" style="margin: auto">
       <el-form-item label="公告描述" prop="boardDeso">
         <el-input v-model="board.boardDeso"></el-input>
       </el-form-item>
@@ -18,16 +19,17 @@
       </el-form-item>
       <br>
       <el-form-item>
-        <el-button type="primary" @click="insertBoard2()">添加</el-button>
+        <el-button type="success" plain @click="insertBoard2()">添加</el-button>
       </el-form-item>
     </el-form>
+  </div>
   </div>
 </template>
 <script>
   import axios from 'axios'
   export default{
     data(){
-      return{
+      return {
         board: {
           boardId: '',
           boardDeso: '',
@@ -37,15 +39,18 @@
         }
       }
     },
-    methods:{
-      insertBoard2:function(){
+    methods: {
+      insertBoard2: function () {
         var url = "api/insertBoard"
-        axios.post(url,this.board).then(res=>{
-          if (res.data!='0') {
-            this.$router.push({path:"/boardList"})
-          }else {
-            alert("添加失败！")
-          }
+
+          axios.post(url, this.board).then(res => {
+
+            if (res.data != '0') {
+              this.$router.push({path: "/boardList"})
+            } else {
+              alert("添加失败！请正确填写")
+            }
+
         })
       }
     }
