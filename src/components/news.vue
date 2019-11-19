@@ -129,4 +129,7 @@
     background-color: inherit;
     color: black;
   }
+  .el-carousel__item.is-animating{
+    height:288px;
+  }
 </style>

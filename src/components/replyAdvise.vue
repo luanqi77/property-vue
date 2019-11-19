@@ -91,12 +91,12 @@
     },
     methods:{
       tableRowClassName({row, rowIndex}) {
-        if (rowIndex === 1) {
-          return 'warning-row';
-        } else if (rowIndex === 3) {
-          return 'success-row';
-        }
-        return '';
+          if (rowIndex === 1) {
+            return 'warning-row';
+          } else if (rowIndex === 3) {
+            return 'success-row';
+          }
+          return '';
       },
       changePage:function (page) {
         this.params.page=page

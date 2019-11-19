@@ -28,6 +28,10 @@ import staffReply from '@/components/staffReply'
 import myReply from '@/components/myReply'
 import insertStaff from '@/components/insertStaff'
 import manageParking from '@/components/manageParking'
+import login from '@/components/login'
+import getword from '@/components/getword'
+import userReister from '@/components/userReister'
+import binding from '@/components/binding'
 
 import userinfo from '@/components/userinfo'
 import pay from '@/components/pay'
@@ -40,6 +44,8 @@ import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
 import updateUserMessage from '@/components/updateUserMessage'
 import insertUserMessage from '@/components/insertUserMessage'
+import informationinfo from '@/components/informationinfo'
+
 Vue.use(Router)
 
 export default new Router({
@@ -50,9 +56,29 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/userReister',
+      name: 'userReister',
+      component: userReister
+    },
+    {
+      path: '/binding',
+      name: 'binding',
+      component: binding
+    },
+    {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/getword',
+      name: 'getword',
+      component: getword
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path:"/staffMain",
@@ -206,7 +232,7 @@ export default new Router({
         {path:'/apply',
           name:'apply',
           component:apply},
-        {path:'/myhouse',
+        {path:'/myhouse/:userid',
           name:'myhouse',
           component:myhouse},
         {path:'/informations',
@@ -220,7 +246,10 @@ export default new Router({
           component:news},
         {path:'/boardinfo/:boardId',
           name:'boardinfo',
-          component:boardinfo}
+          component:boardinfo},
+        {path:'/informationinfo/:inid',
+          name:'informationinfo',
+          component:informationinfo}
       ]
     }
   ]

@@ -1,9 +1,7 @@
 <template>
   <div>
   <div>
-    <el-table
-      :data="informations"
-      style="width: 100%">
+    <el-table :data="informations" style="width: 100%">
       <el-table-column
         prop="inid"
         label="编号"
@@ -35,16 +33,25 @@
 
       <el-table-column label="操作" width="180">
         <template slot-scope="information">
-          <el-button type="primary" icon="el-icon-edit" circle @click="updateInformation(information.row.inid)"></el-button>
+          <el-button type="primary" plain @click="updateInformation(information.row.inid)">修改</el-button>
 
-          <el-button type="danger" icon="el-icon-delete" circle @click="deleteInformation(information.row.inid)"></el-button>
+          <el-button type="danger" plain @click="deleteInformation(information.row.inid)">删除</el-button>
 
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="this.params.size"
+      v-on:current-change="changePage"
+      :total="total"
+      :current-page="this.params.page">
+    </el-pagination>
   </div>
   <div>
-    <el-button type="success" icon="el-icon-check" circle @click="insertInformation()"></el-button>
+    <!--<el-button type="success" icon="el-icon-check" circle @click="insertInformation()">新增</el-button>-->
+    <el-button type="success" plain @click="insertInformation()">新增</el-button>
   </div>
   </div>
 </template>
@@ -54,7 +61,12 @@
   export default {
     data() {
       return {
-        informations: []
+        informations: [],
+        params:{
+            page:'1',
+            size:'3',
+        },
+        total:""
       }
     },
     mounted(){
@@ -65,10 +77,16 @@
     methods:{
 
       query:function () {
-        var url = 'api/findAllInformation'
+        var url = 'api/findAllInformationBypage/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res =>{
-          this.informations = res.data;
+          this.informations = res.data.list;
+          this.total=res.data.total;
         })
+      },
+      changePage: function (page) {
+        this.params.page = page
+        this.query();
+
       },
       updateInformation: function (inid) {
         this.$router.push({path: '/updateInformation/' + inid})
