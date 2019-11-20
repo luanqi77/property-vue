@@ -121,7 +121,7 @@
             .then(function (response) {
               if(response.data == 'succeed'){
                 loadingInstance.close();
-                that.$router.push({path : '/news'})
+                that.$router.push({path : '/userinfo'})
 
               }else{
                 loadingInstance.close();

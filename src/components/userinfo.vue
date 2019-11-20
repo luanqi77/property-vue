@@ -36,7 +36,7 @@ c<template>
     <div style="width:100%;height: 60px">
     <el-menu :default-active="this.$route.path" router mode="horizontal" style="opacity: 93%;background-color: inherit;border: inherit 1px solid;box-shadow: 0 0 20px red">
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" style="color: black">
-        {{ item.navItem }}
+        {{ item.navItem}}
       </el-menu-item>
       <el-input placeholder="请输入资讯、便民服务等关键字进行查询" style="width: 26%;margin-top: 10px"></el-input>
       <el-button style="color: black;background-color: lightblue;margin-left: -4px;width: 90px" @click="search()">搜索</el-button>
@@ -67,9 +67,9 @@ c<template>
         navList:[
           {name:'/news',navItem:'热点资讯'},
 //          {name:'/userdetail',navItem:'个人中心'},
-          {name:'/advise/11',navItem:'建议投诉'},
-          {name:'/apply/11',navItem:'报修申请'},
-          {name:'/myhouse/11',navItem:'我的不动产'},
+          {name:'/advise',navItem:'建议投诉'},
+          {name:'/apply',navItem:'报修申请'},
+          {name:'/myhouse/',navItem:'我的不动产'},
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],

@@ -39,7 +39,7 @@
       }
     },
     mounted(){
-      this.apply.userId  = this.$route.params.userid;
+      this.apply.userId  = this.$parent.user.userId;
     },
     methods: {
       handleSelect(key, keyPath) {
