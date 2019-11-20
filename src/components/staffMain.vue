@@ -132,9 +132,9 @@
                 message: '自动返回主页',
                 type: 'success'
               });
-              this.$router.push({path:"/index"})
+              this.$router.push({path:"/login"})
             }else {
-              this.$router.push({path:"/index"})
+              this.$router.push({path:"/login"})
             }
         })
       },
