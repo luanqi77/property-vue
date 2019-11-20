@@ -31,6 +31,7 @@ import login from '@/components/login'
 import getword from '@/components/getword'
 import userReister from '@/components/userReister'
 import binding from '@/components/binding'
+import updateUserMessage from '@/components/updateUserMessage'
 
 import userinfo from '@/components/userinfo'
 import pay from '@/components/pay'
@@ -42,7 +43,11 @@ import userupdate from '@/components/userupdate'
 import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
 import informationinfo from '@/components/informationinfo'
+import parkingSpaces from '@/components/parkingSpaces'
+import updateParkingSpaces from '@/components/updateParkingSpaces'
+
 import noPermission from '@/components/noPermission'
+import insertUserMessage from '@/components/insertUserMessage'
 
 Vue.use(Router)
 
@@ -197,6 +202,26 @@ export default new Router({
           path:'noPermission',
           name:'noPermission',
           component:noPermission
+        },
+        {
+          path:'parkingSpaces',
+          name:'parkingSpaces',
+          component:parkingSpaces
+        },
+        {
+          path:'/updateParkingSpaces/:up_id',
+          name:'updateParkingSpaces',
+          component:updateParkingSpaces
+        },
+        {
+          path:'insertUserMessage',
+          name:'insertUserMessage',
+          component:insertUserMessage
+        },
+        {
+          path:'updateUserMessage/:id',
+          name:'updateUserMessage',
+          component:updateUserMessage
         }
       ],
 

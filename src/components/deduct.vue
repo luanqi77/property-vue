@@ -1,13 +1,13 @@
 <template>
   <div style="width: 100%">
     <div style="width: 500px;height:500px;margin-left: 100%;margin-top: 100px">
-      物业费用(元) : <el-input-number v-model="deduct.propertyFee"
+      物业费用(m²/元) : <el-input-number v-model="deduct.propertyFee"
       :precision="2" :step="0.01" :min="0" size="medium" style="margin-left: 10px"></el-input-number><br><br>
-      暖气费用(元) : <el-input-number v-model="deduct.hotFee"
+      暖气费用(m²/元) : <el-input-number v-model="deduct.hotFee"
       :precision="2" :step="0.01" :min="0" size="medium" style="margin-left: 10px"></el-input-number><br><br>
-      缴费日期(日) : <el-input-number v-model="deduct.deductTime"
+      缴费日期( 每月) : <el-input-number v-model="deduct.deductTime"
       :min=1 :max="28" size="medium" style="margin-left: 10px"></el-input-number><br><br>
-      催费日期(日) : <el-input-number v-model="deduct.warnTime"
+      催费日期( 每月) : <el-input-number v-model="deduct.warnTime"
       :min=1 :max="28" size="medium" style="margin-left: 10px"></el-input-number><br><br>
       <el-button  type="primary" round style="font-size: 15px;width: 200px;margin-top: 20px;margin-left: 110px" @click="updateDeduct()">确认修改</el-button>
     </div>
@@ -53,7 +53,7 @@
         axios.post(url).then(res=>{
           if (res.data=='未登录'){
               alert(res.data)
-            this.$router.push({path:'/index'})
+            this.$router.push({path:'/login'})
           }
           this.deduct=res.data
         })

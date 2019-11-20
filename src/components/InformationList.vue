@@ -1,45 +1,55 @@
 <template>
-  <div>
-  <div>
-    <el-table :data="informations" style="width: 100%">
+  <div style="width: 100%;height: 600px;margin: auto">
+  <div style="margin: auto">
+    <el-table :data="informations" stripe style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)">
       <el-table-column
         prop="inid"
         label="编号"
-        width="100">
+        width="200"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="description"
         label="描述"
-        width="300">
+        width="423"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="tel"
-        label="电话">
+        label="电话"
+        width="200"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="connname"
         label="姓名"
-        :formatter="dateFormat">
+        width="100"
+        :formatter="dateFormat"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="servername"
-        label="服务名称">
+        label="服务名称"
+        width="200"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="company"
         label="公司"
-        width="200">
+        width="300"
+        align="center">
       </el-table-column>
 
-      <el-table-column label="操作" width="180">
+      <el-table-column label="操作" width="200" align="center">
         <template slot-scope="information">
-          <el-button type="primary" plain @click="updateInformation(information.row.inid)">修改</el-button>
+          <el-button type="primary" round @click="updateInformation(information.row.inid)">修改</el-button>
 
-          <el-button type="danger" plain @click="deleteInformation(information.row.inid)">删除</el-button>
+          <el-button type="danger" round @click="deleteInformation(information.row.inid)">删除</el-button>
 
         </template>
       </el-table-column>
     </el-table>
+    <br/>
     <el-pagination
       background
       layout="prev, pager, next"
@@ -49,9 +59,10 @@
       :current-page="this.params.page">
     </el-pagination>
   </div>
+    <br/>
   <div>
     <!--<el-button type="success" icon="el-icon-check" circle @click="insertInformation()">新增</el-button>-->
-    <el-button type="success" plain @click="insertInformation()">新增</el-button>
+    <el-button type="success" round @click="insertInformation()">新增</el-button>
   </div>
   </div>
 </template>
@@ -64,7 +75,7 @@
         informations: [],
         params:{
             page:'1',
-            size:'3',
+            size:'9',
         },
         total:""
       }
