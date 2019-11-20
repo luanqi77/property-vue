@@ -9,7 +9,7 @@
       </el-carousel>
     </div>
     <div style="width: 45%;height: 320px;border: white 1px solid;margin-top: 30px;margin-left:30px;float: left">
-      <div style="height: 5%;width: 100%;margin: auto;margin-top: -20px;margin-bottom: 10px">
+      <div style="height: 5%;width: 100%;margin: auto;margin-top: -20px;margin-bottom: 40px">
         <h3 style="float: left;color: goldenrod"><i class="el-icon-s-opportunity"></i>&nbsp;热点资讯</h3>
       </div>
       <div style="height:92%;width: 100%;margin:auto;border: 3px red solid">
@@ -33,8 +33,8 @@
         </el-table>
       </div>
     </div><br>
-    <div style="width: 45%;height: 320px;border: white 1px solid;margin-top: -5px;margin-left:30px;float: left">
-      <div style="height: 6%;width: 100%;margin: auto">
+    <div style="width: 45%;height: 320px;border: white 1px solid;margin-top: -60px;margin-left:30px;float: left">
+      <div style="height: 6%;width: 100%;margin-top: 30px;margin-bottom: 40px">
         <h3 style="float: left;color: green"><i class="el-icon-office-building"></i>&nbsp;社区公告</h3>
       </div>
       <div style="height:92%;width: 100%;margin-top:10px;border: 3px mediumpurple solid">
