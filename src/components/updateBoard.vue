@@ -43,6 +43,14 @@
       var boardId = this.$route.params.boardId
       var url = 'api/selectBoardById/'
       axios.post(url, {boardId: boardId}).then(res => {
+        if(res.data=="未登录"){
+          alert("您好，请登录")
+          this.$router.push({path:'/login'})
+        }
+        if (res.data=="权限不足"){
+          alert(res.data)
+          this.$router.push({path:'/staffMain/noPermission'})
+        }
         if (res.data != null) {
           this.board = res.data;
         } else {
@@ -54,6 +62,14 @@
       updateBoard2: function () {
         var url = '/api/updateBoard'
         axios.post(url, this.board).then(res => {
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           if (res.data !='0') {
             alert("修改成功！")
             this.$router.push('/boardList')

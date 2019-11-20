@@ -144,6 +144,10 @@
                 alert("请您登录！")
               this.$router.push({path:'/login'})
             }else {
+              if (res.data=="权限不足"){
+                alert(res.data)
+                this.$router.push({path:'/staffMain/noPermission'})
+              }
               this.logInfos = res.data.logInfos;
               this.total=res.data.total;
             }

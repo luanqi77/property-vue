@@ -106,6 +106,24 @@
         this.params.page=page
         this.search();
       },
+      delUser:function (userId) {
+        var url='api/removeMaster'
+        axios.post(url,{userId:userId}).then(res=>{
+          if(res.data=="未登录"){
+            alert("请您登陆")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
+          if(res.data=="success"){
+            alert("已清空用户")
+            this.search();
+          }
+        })
+
+      },
       search:function () {
         var url = '/api/findUserAccount'
         console.log(this.params)
@@ -114,6 +132,10 @@
                 alert("您好，请登录")
               this.$router.push({path:'/login'})
             }else{
+                if (res.data=="权限不足"){
+                  alert(res.data)
+                  this.$router.push({path:'/staffMain/noPermission'})
+                }
               this.user = res.data.userAccounts;
               this.total=res.data.total;
             }
@@ -126,27 +148,17 @@
               alert("您好，请登录")
               this.$router.push({path:'/login'})
             }else{
+              if (res.data=="权限不足"){
+                alert(res.data)
+                this.$router.push({path:'/staffMain/noPermission'})
+              }
               if (res.data=="success"){
                 alert("催费提醒短信发送成功")
               }
             }
           })
       },
-      delUser:function (userId) {
-        var url='api/removeMaster'
-        alert(userId)
-        axios.post(url,{userId:userId}).then(res=>{
-            if(res.data=="未登录"){
-                alert("请您登陆")
-              this.$router.push({path:'/login'})
-            }
-            if(res.data=="success"){
-                alert("已清空用户")
-              this.search();
-            }
-        })
 
-      },
       toUpdateUser:function (id) {
 
         this.$router.push({path: 'updateUserMessage/' + id})

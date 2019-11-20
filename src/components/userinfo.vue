@@ -69,7 +69,7 @@ c<template>
 //          {name:'/userdetail',navItem:'个人中心'},
           {name:'/advise',navItem:'建议投诉'},
           {name:'/apply',navItem:'报修申请'},
-          {name:'/myhouse/',navItem:'我的不动产'},
+          {name:'/myhouse',navItem:'我的不动产'},
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],

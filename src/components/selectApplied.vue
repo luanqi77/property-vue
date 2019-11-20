@@ -49,11 +49,14 @@
         >
         </el-table-column>
         <el-table-column
-          prop="status"
+          prop=""
           label="状态"
           width="200"
           align="center"
         >
+          <template slot-scope="apply">
+            {{ apply.row.status ? '已回复' : '未回复' }}
+          </template>
         </el-table-column>
         <el-table-column
           prop="staff_name"
@@ -112,6 +115,14 @@
         var status=2;
         var url = '/api/selectApplyByStaff/'+status+"/"+this.params.page+"/"+this.params.size
         axios.get(url).then(res => {
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           this.apply = res.data.applyList;
           this.total=res.data.total;
         })

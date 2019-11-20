@@ -57,6 +57,14 @@
       var adviseId=this.$route.params.adviseId
         var url='api/selectAdviseByAdviseId'
         axios.post(url,{adviseId:adviseId}).then(res=>{
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
             this.advise=res.data;
         })
     },
@@ -73,6 +81,10 @@
             alert("请您先去登录！")
             this.$router.push({path:'/index'})
           }else {
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
           if (res.data =='success') {
             const h = this.$createElement;
             this.$notify({

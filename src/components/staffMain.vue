@@ -17,7 +17,11 @@
       <el-aside width="250px" style="background-color: rgb(238, 241, 246);height: 800px">
         <el-menu :default-openeds="['1', '8']">
           <el-submenu index="1">
-            <template slot="title" typeof="card"><router-link  to="/staffMain/propertyAccount"><i class="el-icon-office-building"></i>业主信息</router-link></template>
+            <template slot="title" ><i class="el-icon-office-building"></i>业主信息</template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1"><router-link  to="/staffMain/propertyAccount">信息管理</router-link></el-menu-item>
+              <el-menu-item index="1-2"><router-link  to="/staffMain/staffMessage">缴费率</router-link></el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
 
           <el-submenu index="2">

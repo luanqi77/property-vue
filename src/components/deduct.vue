@@ -37,6 +37,14 @@
       updateDeduct:function () {
         var url='api/updateDeduct'
         axios.post(url,this.deduct).then(res=>{
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           if (res.data=="success") {
             this.$message({
               message: '修改成功',
@@ -54,6 +62,10 @@
           if (res.data=='未登录'){
               alert(res.data)
             this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
           }
           this.deduct=res.data
         })
