@@ -63,7 +63,7 @@
           <el-submenu index="7">
             <template slot="title"><i class="el-icon-truck"></i>车位信息</template>
             <el-menu-item-group>
-              <el-menu-item index="7-1"><router-link  to="/staffMain/manageParking">管理车位</router-link></el-menu-item>
+              <el-menu-item index="7-1"><router-link  to="/parkingSpaces">管理车位</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
