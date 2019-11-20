@@ -43,6 +43,9 @@ import userupdate from '@/components/userupdate'
 import news from '@/components/news'
 import boardinfo from '@/components/boardinfo'
 import informationinfo from '@/components/informationinfo'
+import parkingSpaces from '@/components/parkingSpaces'
+import updateParkingSpaces from '@/components/updateParkingSpaces'
+
 import noPermission from '@/components/noPermission'
 import insertUserMessage from '@/components/insertUserMessage'
 
@@ -199,6 +202,16 @@ export default new Router({
           path:'noPermission',
           name:'noPermission',
           component:noPermission
+        },
+        {
+          path:'/parkingSpaces',
+          name:'parkingSpaces',
+          component:parkingSpaces
+        },
+        {
+          path:'/updateParkingSpaces/:up_id',
+          name:'updateParkingSpaces',
+          component:updateParkingSpaces
         },
         {
           path:'insertUserMessage',

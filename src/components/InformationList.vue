@@ -1,7 +1,7 @@
 <template>
-  <div>
-  <div>
-    <el-table :data="informations" style="width: 100%">
+  <div style="width: 80%;height: 600px;margin: auto">
+  <div style="margin-left:300px;width: 100%;margin: auto">
+    <el-table :data="informations" style="width: 1500px;margin: auto">
       <el-table-column
         prop="inid"
         label="编号"
