@@ -3,22 +3,22 @@
     <h3 style="color: cornflowerblue;margin-bottom: -25px;margin-top: 30px">个人信息修改</h3>
     <el-form ref="form" :model="user" label-width="35%" style="width: 50%;margin: auto">
       <el-form-item label="">
-        <el-input v-model="user.id" type="hidden"></el-input>
+        <el-input v-model="user.userId" type="hidden"></el-input>
       </el-form-item>
       <el-form-item label="用户名">
       <el-input v-model="user.username" style="width: 65%;margin-left: -125px">sssss</el-input>
       </el-form-item>
       <el-form-item label="密码">
-      <el-input v-model="user.username" style="width: 65%;margin-left: -125px" placeholder="请输入新密码"></el-input>
+      <el-input v-model="user.password" style="width: 65%;margin-left: -125px" placeholder="请输入新密码"></el-input>
       </el-form-item>
       <el-form-item label="确认密码">
-      <el-input v-model="user.username" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>
+      <el-input v-model="repeatpassword" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码">
-      <el-input v-model="user.username" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>
-      </el-form-item>
+      <!--<el-form-item label="确认密码">-->
+      <!--<el-input v-model="user.username" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="邮箱">
-      <el-input v-model="user.username" style="width: 65%;margin-left: -125px" ></el-input>
+      <el-input v-model="user.email" style="width: 65%;margin-left: -125px" ></el-input>
       </el-form-item>
       <el-form-item label="上传头像" style="width: 65%;float: left" >
         <!--<el-upload-->
@@ -65,13 +65,17 @@
       return {
         doUpload:'api/uploadpic',
           user:{
-              id:'',
+              userId:'',
               username:'',
               email:'',
               password:'',
               pic:''
-          }
+          },
+          repeatpassword:''
       }
+    },
+    mounted(){
+      this.getUser();
     },
     methods: {
       beforeUpload(file){
@@ -89,8 +93,21 @@
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
+      //返回主菜单（news页面）
       goback:function () {
         this.$router.push({path:'/news'})
+      },
+      //获取用户修改前的信息
+      getUser:function () {
+          var id = this.$route.params.userid
+          var url = 'api/findSession'
+          axios.get(url).then(res=>{
+              this.user=res.data;
+          })
+      },
+    //修改用户信息方法
+      userupdate:function () {
+//        var url = 'api/'
       }
     }
   }
