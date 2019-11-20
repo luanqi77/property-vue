@@ -56,17 +56,10 @@
         </el-col>
       </el-row>
     </div>
-    <div class="popupBox" style="display:none">
-      <p>二维码扫描失败</p>
-      <p>此微信未绑定或未注册，请选择</p>
-      <div class="btns" @click="binding">已有账号，进行绑定</div>
-      <br>
-      <div class="btns" @click="zhuce">未注册，进行注册</div>
-    </div>
+   
   </div>
 </template>
 <script>
-  import '@/assets/css/base.css';
 //  import $ from "jquery";
 //  import wx from "weixin-js-sdk";
   import axios from 'axios'
@@ -133,25 +126,7 @@
             });
 
         }else{
-          var url='api/userLogin'
-          const that = this;
-          axios.post(url, {
-            username: this.names,        // 参数 firstName
-            password: this.passw    // 参数 lastName
-          })
-            .then(function (response) {
-              if(response.data == 'succeed'){
-                loadingInstance.close();
-                that.$router.push({path : '/'})
-
-              }else{
-                loadingInstance.close();
-                alert('账号或密码错误')
-              }
-
-            }).catch(function (error) {
-            console.log(error);
-          });
+        
           var url='api/StaffLogin'
           const that = this;
           axios.post(url, {
