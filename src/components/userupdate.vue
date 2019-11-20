@@ -98,7 +98,7 @@
       },
       //获取用户修改前的信息
       getUser:function () {
-          var id = this.$route.params.userid
+          var id = this.$parent.user.userId
           var url = 'api/findSession'
           axios.get(url).then(res=>{
               this.user=res.data;
