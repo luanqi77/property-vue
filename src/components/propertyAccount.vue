@@ -132,10 +132,10 @@
             }
           })
       },
-      delUser:function (id) {
+      delUser:function (userId) {
         var url='api/removeMaster'
-        alert(id)
-        axios.post(url,{id:id}).then(res=>{
+        alert(userId)
+        axios.post(url,{userId:userId}).then(res=>{
             if(res.data=="未登录"){
                 alert("请您登陆")
               this.$router.push({path:'/login'})

@@ -4,12 +4,12 @@
       <span class="demonstration">查询日期 :</span>
       <el-date-picker
         v-model="value2"
-        type="datetime"
+        type="date"
         placeholder="选择日期时间"
         align="right"
         :picker-options="pickerOptions">
       </el-date-picker>
-      <el-button type="primary" @click="selectLog()" >搜索</el-button>
+      <el-button type="primary" @click="query()" >搜索</el-button>
     </div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
