@@ -25,7 +25,7 @@
           <el-table
             :data="parks"
             stripe
-            style="width: 40%;float:left;margin-top: 20px;height: 100%">
+            style="width: 25%;float:left;margin-top: 20px;height: 100%">
             <el-table-column
               prop="park_id"
               label="车位编号"
