@@ -9,6 +9,9 @@
       <div style="height: 20%;width: 80%;margin-top: 45px">
         <el-button @click="checkpassword()" style="float: left">查看余额</el-button>
       </div>
+      <div style="height: 20%;width: 80%;margin-top: 45px">
+        <el-button @click="pay()" style="float: left">充值</el-button>
+      </div>
     </div>
     <div style="width: 100%;height: 70%">
 
@@ -34,6 +37,20 @@
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      pay:function () {
+        var url ='api/propertypay'
+        axios.post(url).then(res=>{
+          if(res.status==200) {
+            let routerData = this.$router.resolve({path: '/ApplyText', query: {htmls: res.data}})
+            this.htmls = res.data
+            window.open(routerData.href, '_blank')
+            const div = document.createElement('div');
+            div.innerHTML = htmls;
+            document.body.appendChild(div);
+            document.forms[0].submit();
+          }
+        })
       },
       checkpassword:function () {
 //        var
