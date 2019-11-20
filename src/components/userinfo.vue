@@ -1,11 +1,13 @@
 c<template>
   <!--<div style="width: 100%;height:6000px;margin: auto;background-color: red;margin-top: -50px">-->
-  <div  id="back" style="width: 100%;height: 900px;padding-top: 50px;margin-top: -50px">
+  <div  id="back" style="width: 100%;height: 900px;padding-top: 50px;margin-top: -59px">
     <div style="width: 80%;height: 800px;margin: auto;opacity:90%;background-color:white;border: inherit 1px solid;box-shadow: 0 0 20px red">
       <div style="width: 24.8%;float: left;height: 800px;border-right: inherit 1px solid;box-shadow: 0 0 20px red">
         <div style="width: 100%;height: 35%;background-color: inherit">
-          <div style="width: 100%;height: 75%;padding-top: 20px">
-              <el-avatar  :size="200"  :src="url" style="margin: auto"></el-avatar>
+          <img src="../assets/userinfo/exit.png" style="float: left;margin-left: 10px;margin-top: 5px" @click="loginout()"/>
+          <!--<el-link @click="loginout()"><img src="../assets/userinfo/exit.png" style="float: left;margin-left: 10px;margin-top: 5px" @click="loginout()"/></el-link>-->
+          <div style="width: 100%;height: 75%;padding-top: 20px;margin-left: -10px">
+              <el-avatar  :size="200"  :src="user.pic" style="margin: auto"></el-avatar>
           </div>
           <div style="height: 25%;">
             <h3 style="color: black">欢迎您，尊贵的业主</h3>
@@ -71,7 +73,7 @@ c<template>
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],
-        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573706863385&di=48e94a7020d9d2d165ea37a73aee29f3&imgtype=0&src=http%3A%2F%2Fimg.hc360.com%2Fbroadcast%2Finfo%2Fimages%2F200909%2F200909140942522174.jpg',
+//        url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573706863385&di=48e94a7020d9d2d165ea37a73aee29f3&imgtype=0&src=http%3A%2F%2Fimg.hc360.com%2Fbroadcast%2Finfo%2Fimages%2F200909%2F200909140942522174.jpg',
         user:{
             userId:'',
             username:'',
@@ -118,6 +120,14 @@ c<template>
         axios.get(url).then(res=>{
             this.user=res.data
         })
+      },
+      loginout:function () {
+          this.$notify({
+            title: '注销成功',
+            message: '已返回登录页面',
+            type: 'success'
+          });
+        this.$router.push({path:'/login'})
       }
     }
   }
