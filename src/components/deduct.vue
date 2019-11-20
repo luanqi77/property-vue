@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div style="width: 500px;height:500px;margin-left: 400px;margin-top: 50px">
+  <div style="width: 100%">
+    <div style="width: 500px;height:500px;margin-left: 100%;margin-top: 100px">
       物业费用(元) : <el-input-number v-model="deduct.propertyFee"
       :precision="2" :step="0.01" :min="0" size="medium" style="margin-left: 10px"></el-input-number><br><br>
       暖气费用(元) : <el-input-number v-model="deduct.hotFee"
@@ -9,7 +9,7 @@
       :min=1 :max="28" size="medium" style="margin-left: 10px"></el-input-number><br><br>
       催费日期(日) : <el-input-number v-model="deduct.warnTime"
       :min=1 :max="28" size="medium" style="margin-left: 10px"></el-input-number><br><br>
-      <el-button  round style="font-size: 15px;width: 200px;margin-top: 20px;margin-left: 110px" @click="updateDeduct()">确认修改</el-button>
+      <el-button  type="primary" round style="font-size: 15px;width: 200px;margin-top: 20px;margin-left: 110px" @click="updateDeduct()">确认修改</el-button>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
       updateDeduct:function () {
         var url='api/updateDeduct'
         axios.post(url,this.deduct).then(res=>{
-          if (res.data=="ok") {
+          if (res.data=="success") {
             this.$message({
               message: '修改成功',
               type: 'success'
@@ -49,8 +49,12 @@
         })
       },
       query:function () {
-        var url='api/selectDeduct'
+        var url='api/getDeduct'
         axios.post(url).then(res=>{
+          if (res.data=='未登录'){
+              alert(res.data)
+            this.$router.push({path:'/index'})
+          }
           this.deduct=res.data
         })
       }

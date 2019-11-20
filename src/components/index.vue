@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;height:6000px;margin: auto;background-color: yellow;margin-top: -50px">
+  <div style="width: 100%;height:3000px;margin: auto;">
     <div style="width: 100%;margin: auto;height: 118px;background-color: black">
       <div style="width: 30%;float: left;margin-left: 50px">
         <img src="../assets/index/logo1.png" width="60%"></img>
@@ -27,7 +27,7 @@
         <div style="width: 58%;margin: auto;margin-top: 20px">
         <el-carousel :interval="3000" type="card" height="214px">
           <el-carousel-item v-for="item in fuwus" :key="item" >
-            <img :src="item.src" width="500px" height="214px">
+            <img :src="item.src" width="550px" height="214px">
           </el-carousel-item>
         </el-carousel>
         </div>
@@ -124,7 +124,7 @@
     },
     methods:{
       login:function () {
-        this.$router.push({path:"/staffMain/staffMessage"})
+          this.$router.push({path:'/login'})
       }
     }
   }

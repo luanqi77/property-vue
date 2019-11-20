@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <div style="width: 500px;height:500px;margin-left: 400px;margin-top: 50px">
+  <div style="width: 100%" >
+    <div style="width: 500px;height:500px;margin-left: 100%;margin-top: 100px">
       <el-form :inline="true" :model="staff" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" >
         <el-form-item label="用户名" prop="staffName">
           <el-input v-model="staff.staffName" :disabled="true"></el-input>
@@ -15,7 +15,7 @@
           <el-input type="password" v-model="staff.checkPass" autocomplete="off"></el-input>
         </el-form-item><br>
         <el-form-item>
-          <el-button type="primary" @click="submitForm()" style="margin-left: 100px">确认修改</el-button>
+          <el-button type="primary" @click="submitForm()" style="margin-left: 140px">确认修改</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -67,19 +67,19 @@
     },
 
     mounted(){
-        //查员工信息
-        var url='api/selectStaff'
-        axios.post(url).then(res=>{
-            this.staff=res.data;
-        })
+        //得到员工信息
+        var url='api/getCurrentStaff'
+      axios.get(url).then(res=>{
+        this.staff=res.data;
+      })
     },
     methods:{
-      submitForm(formName) {
-        var url='api/updateStaff'
+      submitForm() {
+        var url='api/updateStaffPassword'
         axios.post(url,this.staff).then(res=>{
           if (res.data=="success"){
             alert('修改成功，请重新登录')
-            //this.$router.push({path:"/index/"+username})
+            this.$router.push({path:"/login"})
           }else {
             this.$message.error('修改失败');
           }

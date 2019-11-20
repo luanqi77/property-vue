@@ -1,4 +1,4 @@
-<template>
+c<template>
   <!--<div style="width: 100%;height:6000px;margin: auto;background-color: red;margin-top: -50px">-->
   <div  id="back" style="width: 100%;height: 900px;padding-top: 50px;margin-top: -50px">
     <div style="width: 80%;height: 800px;margin: auto;opacity:90%;background-color:white;border: inherit 1px solid;box-shadow: 0 0 20px red">
