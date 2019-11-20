@@ -1,69 +1,65 @@
 <template>
-  <div style="margin-top: -60px">
-    <div style="width: 100%;margin: auto;height: 100px;background-color: #F2F6FC">
-      <div style="width: 30%;float: left;margin-left: -10px">
+  <div style="">
+    <div style="width: 100%;margin: auto;height: 110px;background-color: rgb(238, 241, 246)">
+      <div style="width: 30%;float: left;margin-left: 0px">
         <img src="../assets/index/logo1.png" width="60%"></img>
       </div>
       <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
       <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
-      <span style="margin-left: 250px;font-size: 18px">{{staffName}},您好</span>
-      <el-button  round style="font-size: 15px;margin-left: 40px;margin-top: 25px;" @click="loginout()">注销</el-button>
-      <el-button  round style="font-size: 15px;margin-right: -500px;margin-top: 25px;" @click="staffInfo()">个人信息</el-button>
+      <span style="margin-left: 950px;font-size: 18px">{{Staff.staffName}},您好</span>
+      <el-button type="danger" round style="font-size: 15px;margin-left: 40px;margin-top: 35px;" @click="loginout()">注销</el-button>
+      <el-button type="primary" round style="font-size: 15px;margin-right: -600px;margin-top: 35px;" @click="staffInfo()">个人信息</el-button>
 
     </div>
-    <el-container style="height: 900px; border: 1px solid #eee; width: 100%">
-    <div style="float: left">
-      <el-aside width="220px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '6']">
+    <div style="width: 100%; ">
+    <el-container style="height: 800px; border: 1px solid #eee; width: 100%">
+    <div style="float: left;">
+      <el-aside width="250px" style="background-color: rgb(238, 241, 246);height: 800px">
+        <el-menu :default-openeds="['1', '8']">
           <el-submenu index="1">
-            <template slot="title" ><i class="el-icon-user-solid"></i>权限管理</template>
-            <el-menu-item-group>
-              <el-menu-item index="1-1"><router-link  to="/staffMain/viewStaff">查看员工</router-link></el-menu-item>
-              <!--<el-menu-item index="1-2"><router-link  to="/staffMain/permissionAssignment">职责分配</router-link></el-menu-item>-->
-            </el-menu-item-group>
+            <template slot="title"><router-link  to="/staffMain/propertyAccount"><i class="el-icon-office-building"></i>业主信息</router-link></template>
           </el-submenu>
+
           <el-submenu index="2">
-            <template slot="title"><i class="el-icon-menu"></i>财务管理</template>
-              <el-menu-item-group>
-                <el-menu-item index="2-1"><router-link  to="/staffMain/propertyAccount">业主账户</router-link></el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group>
-                <el-menu-item index="2-2"><router-link  to="/staffMain/deduct">扣费设置</router-link></el-menu-item>
-              </el-menu-item-group>
-          </el-submenu>
-            <el-submenu index="3">
-            <template slot="title"><i class="el-icon-warning"></i>投诉建议</template>
-            <el-menu-item-group>
-              <el-menu-item index="3-1"><router-link  to="/staffMain/replyAdvise">查看投诉</router-link></el-menu-item>
-              <el-menu-item index="3-2"><router-link  to="/staffMain/myReply">我的回复</router-link></el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="4">
             <template slot="title"><i class="el-icon-phone"></i>报修处理</template>
             <el-menu-item-group>
-              <el-menu-item index="4-1"><router-link  to="/staffMain/selectApply">未处理</router-link></el-menu-item>
-              <el-menu-item index="4-2"><router-link  to="/staffMain/selectApplied">已处理</router-link></el-menu-item>
+              <el-menu-item index="2-1"><router-link  to="/staffMain/selectApply">未处理</router-link></el-menu-item>
+              <el-menu-item index="2-2"><router-link  to="/staffMain/selectApplied">已处理</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="5">
-            <template slot="title"><i class="el-icon-document"></i>操作记录</template>
+
+          <el-submenu index="3">
+            <template slot="title"><router-link  to="/staffMain/manageParking"><i class="el-icon-truck"></i>车位管理</router-link></template>
+          </el-submenu>
+
+
+            <el-submenu index="4">
+            <template slot="title"><i class="el-icon-warning"></i>投诉建议</template>
             <el-menu-item-group>
-              <el-menu-item index="5-1"><router-link  to="/staffMain/selectOperate">历史操作</router-link></el-menu-item>
+              <el-menu-item index="4-1"><router-link  to="/staffMain/replyAdvise">查看投诉</router-link></el-menu-item>
+              <el-menu-item index="4-2"><router-link  to="/staffMain/myReply">我的回复</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
+
+          <el-submenu index="5">
+            <template slot="title"><router-link  to="/staffMain/deduct"><i class="el-icon-menu"></i>费用管理</router-link></template>
+          </el-submenu>
+
           <el-submenu index="6">
+            <template slot="title" ><router-link  to="/staffMain/viewStaff"><i class="el-icon-user-solid"></i>员工管理</router-link></template>
+          </el-submenu>
+
+          <el-submenu index="7">
+            <template slot="title"><router-link  to="/staffMain/selectOperate"><i class="el-icon-document"></i>操作记录</router-link></template>
+          </el-submenu>
+
+          <el-submenu index="8">
             <template slot="title"><i class="el-icon-wind-power"></i>网站维护</template>
             <el-menu-item-group>
-              <el-menu-item index="6-1"><router-link  to="/boardList">社区公告</router-link></el-menu-item>
+              <el-menu-item index="8-1"><router-link  to="/boardList">社区公告</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
-              <el-menu-item index="6-2"><router-link  to="/InformationList">便名服务</router-link></el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="7">
-            <template slot="title"><i class="el-icon-truck"></i>车位信息</template>
-            <el-menu-item-group>
-              <el-menu-item index="7-1"><router-link  to="/parkingSpaces">管理车位</router-link></el-menu-item>
+              <el-menu-item index="8-2"><router-link  to="/InformationList">便名服务</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -75,7 +71,7 @@
 
       </div>
     </el-container>
-
+    </div>
   </div>
 
 </template>
@@ -112,26 +108,36 @@
     data() {
         return {
           searchInput:'',
-          staffName:''
+          Staff:{
+            staffName:''
+          }
         }
       },
 
       mounted(){
-       var url="api/getStaffName"
+       var url="api/getCurrentStaff"
         axios.get(url).then(res=>{
-            this.staffName=res.data;
+            this.Staff=res.data;
+            alert(res.data)
+            console.log(res.data)
         })
-        this.staffName="张三"
       },
     methods:{
       loginout:function () {
-        const h = this.$createElement;
-        this.$notify({
-          title: '注销成功',
-          message: '自动返回主页',
-          type: 'success'
-        });
-        this.$router.push({path:"/index"})
+        var url='api/StaffLogout'
+        axios.post(url).then(res=>{
+            if(res.data=="success"){
+              const h = this.$createElement;
+              this.$notify({
+                title: '注销成功',
+                message: '自动返回主页',
+                type: 'success'
+              });
+              this.$router.push({path:"/index"})
+            }else {
+                alert("网络不佳")
+            }
+        })
       },
       search:function () {
         if (this.searchInput == '') {

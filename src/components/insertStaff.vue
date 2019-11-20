@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div style="width: 500px;height:500px;margin-left: 400px;margin-top: 50px">
+  <div style="width: 100%;">
+    <div style="width: 500px;height:500px;margin-left: 100%;margin-top: 100px">
       <el-form ref="form" :model="staff" label-width="80px" >
         <el-form-item label="员工姓名">
           <el-input v-model="staff.staffName" @blur="checkStaffName()"></el-input>
@@ -8,9 +8,9 @@
         <el-form-item label="员工工号">
           <el-input v-model="staff.staffNumber" @blur="checkstaffNumber()"></el-input>
         </el-form-item><br>
-        <el-form-item label="员工密码">
-          <el-input type="password" v-model="staff.password" placeholder="默认为123456"></el-input>
-        </el-form-item><br>
+        <!--<el-form-item label="员工密码">-->
+          <!--<el-input type="password" v-model="staff.password" placeholder="默认为123456"></el-input>-->
+        <!--</el-form-item><br>-->
         <el-form-item label="员工职责" >
           <el-select  v-model="staff.roleId"  style="float: left;width: 420px" @blur="checkStaffRoleId()">
             <el-option
@@ -22,7 +22,7 @@
           </el-select>
         </el-form-item><br>
         <el-form-item>
-          <el-button type="primary" @click="submitForm()" style="">提交</el-button>
+          <el-button type="primary" round @click="submitForm()" style="width: 200px">提交</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -49,7 +49,10 @@
     },
 
     mounted(){
-
+      var url='api/selectRoles'
+      axios.post(url).then(res=>{
+          this.roles=res.data;
+      })
     },
     methods:{
       submitForm:function () {

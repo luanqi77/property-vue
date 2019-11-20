@@ -11,7 +11,6 @@ import replyAdvise from '@/components/replyAdvise'
 import selectApply from '@/components/selectApply'
 import selectApplied from '@/components/selectApplied'
 import selectOperate from '@/components/selectOperate'
-import addBoard from '@/components/addBoard'
 import addInformation from '@/components/addInformation'
 import staffMessage from '@/components/staffMessage'
 import InformationList from '@/components/InformationList'
@@ -28,6 +27,10 @@ import staffReply from '@/components/staffReply'
 import myReply from '@/components/myReply'
 import insertStaff from '@/components/insertStaff'
 import manageParking from '@/components/manageParking'
+import login from '@/components/login'
+import getword from '@/components/getword'
+import userReister from '@/components/userReister'
+import binding from '@/components/binding'
 
 import userinfo from '@/components/userinfo'
 import pay from '@/components/pay'
@@ -42,6 +45,7 @@ import informationinfo from '@/components/informationinfo'
 import parkingSpaces from '@/components/parkingSpaces'
 import updateParkingSpaces from '@/components/updateParkingSpaces'
 
+import noPermission from '@/components/noPermission'
 
 Vue.use(Router)
 
@@ -53,9 +57,29 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/userReister',
+      name: 'userReister',
+      component: userReister
+    },
+    {
+      path: '/binding',
+      name: 'binding',
+      component: binding
+    },
+    {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/getword',
+      name: 'getword',
+      component: getword
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path:"/staffMain",
@@ -106,11 +130,6 @@ export default new Router({
           path:'selectOperate',
           name:'selectOperate',
           component:selectOperate
-        },
-        {
-          path:'addBoard',
-          name:'addBoard',
-          component:addBoard
         },
         {
           path:'addInformation',
@@ -178,6 +197,11 @@ export default new Router({
           component:ApplyText
         },
         {
+          path:'noPermission',
+          name:'noPermission',
+          component:noPermission
+        },
+        {
           path:'/parkingSpaces',
           name:'parkingSpaces',
           component:parkingSpaces
@@ -231,3 +255,4 @@ export default new Router({
     }
   ]
 })
+
