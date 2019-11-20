@@ -1,6 +1,6 @@
 c<template>
   <!--<div style="width: 100%;height:6000px;margin: auto;background-color: red;margin-top: -50px">-->
-  <div  id="back" style="width: 100%;height: 900px;padding-top: 50px;">
+  <div  id="back" style="width: 100%;height: 900px;padding-top: 50px">
     <div style="width: 80%;height: 800px;margin: auto;opacity:90%;background-color:white;border: inherit 1px solid;box-shadow: 0 0 20px red">
       <div style="width: 24.8%;float: left;height: 800px;border-right: inherit 1px solid;box-shadow: 0 0 20px red">
         <div style="width: 100%;height: 35%;background-color: inherit">
@@ -67,9 +67,9 @@ c<template>
         navList:[
           {name:'/news',navItem:'热点资讯'},
 //          {name:'/userdetail',navItem:'个人中心'},
-          {name:'/advise/11',navItem:'建议投诉'},
-          {name:'/apply/11',navItem:'报修申请'},
-          {name:'/myhouse/11',navItem:'我的不动产'},
+          {name:'/advise/'+user.userId,navItem:'建议投诉'},
+          {name:'/apply/'+user.userId,navItem:'报修申请'},
+          {name:'/myhouse/'+user.userId,navItem:'我的不动产'},
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],
