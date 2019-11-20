@@ -17,7 +17,7 @@
       <el-aside width="250px" style="background-color: rgb(238, 241, 246);height: 800px">
         <el-menu :default-openeds="['1', '8']">
           <el-submenu index="1">
-            <template slot="title"><router-link  to="/staffMain/propertyAccount"><i class="el-icon-office-building"></i>业主信息</router-link></template>
+            <template slot="title" typeof="card"><router-link  to="/staffMain/propertyAccount"><i class="el-icon-office-building"></i>业主信息</router-link></template>
           </el-submenu>
 
           <el-submenu index="2">

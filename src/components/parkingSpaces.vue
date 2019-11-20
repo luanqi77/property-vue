@@ -1,20 +1,22 @@
 <template>
-  <div style="width: 80%;height: 600px;margin: auto">
-    <div style="margin-left:400px;width: 100%">
-      <el-table :data="parkingspaces" style="width: 500px;margin: auto;">
+  <div style="width: 100%;height: 600px;margin: auto">
+    <div style="margin-left:550px;margin-top: 50px">
+      <el-table :data="parkingspaces" style="margin: auto;">
         <el-table-column
           prop="userId"
           label="用户ID"
-          width="100">
+          width="100"
+          align="center">
         </el-table-column>
         <el-table-column
           prop="park_id"
           label="停车位"
-          width="100">
+          width="100"
+          align="center">
         </el-table-column>
 
 
-        <el-table-column label="操作" width="180">
+        <el-table-column label="操作" width="180" align="center">
           <template slot-scope="parkingspaces">
             <el-button type="primary" round @click="updateParkingSpaces(parkingspaces.row.up_id)">修改</el-button>
 
@@ -30,7 +32,7 @@
         :page-size="this.params.size"
         v-on:current-change="changePage"
         :total="total"
-        :current-page="this.params.page" style="margin-left: -200px">
+        :current-page="this.params.page" style="margin-left: -100px">
       </el-pagination>
     </div>
     <!--<div>-->
@@ -48,7 +50,7 @@
         parkingspaces: [],
         params:{
          page:'1',
-          size:'10',
+          size:'5',
         },
         total:""
       }

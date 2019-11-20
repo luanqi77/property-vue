@@ -8,7 +8,7 @@
     <el-table
       :data="user"
       style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-      :row-class-name="tableRowClassName">
+      stripe>
       <el-table-column
         prop="userId"
         label="业主序号"
@@ -158,3 +158,4 @@
   }
 
 </script>
+
