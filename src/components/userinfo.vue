@@ -67,9 +67,9 @@ c<template>
         navList:[
           {name:'/news',navItem:'热点资讯'},
 //          {name:'/userdetail',navItem:'个人中心'},
-          {name:'/advise/'+user.userId,navItem:'建议投诉'},
-          {name:'/apply/'+user.userId,navItem:'报修申请'},
-          {name:'/myhouse/'+user.userId,navItem:'我的不动产'},
+          {name:'/advise/11',navItem:'建议投诉'},
+          {name:'/apply/11',navItem:'报修申请'},
+          {name:'/myhouse/11',navItem:'我的不动产'},
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],
