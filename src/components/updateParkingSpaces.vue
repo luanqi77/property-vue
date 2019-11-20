@@ -52,7 +52,7 @@
         axios.post(url, this.userparking).then(res => {
           if (res.data !='0') {
             alert("修改成功！")
-            this.$router.push('/parkingSpaces')
+            this.$router.push('/staffMain/parkingSpaces')
           } else {
             alert("修改失败")
           }
