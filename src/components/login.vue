@@ -66,7 +66,7 @@
   </div>
 </template>
 <script>
-  import '@/assets/css/base.css';
+  //import '@/assets/css/base.css';
 //  import $ from "jquery";
 //  import wx from "weixin-js-sdk";
   import axios from 'axios'

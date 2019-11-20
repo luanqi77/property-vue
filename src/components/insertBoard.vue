@@ -1,7 +1,7 @@
 <template>
   <div style="width: 80%;height: 600px;margin: auto">
-  <div style="margin-left: 400px;width: 100%">
-    <el-form :inline="true" :model="board" class="demo-form-inline" style="margin: auto">
+  <div style="margin-left: 400px;width: 100%;margin-top: 100px">
+    <el-form ref="form" :model="board" label-width="80px" style="margin: auto">
       <el-form-item label="公告描述" prop="boardDeso">
         <el-input v-model="board.boardDeso"></el-input>
       </el-form-item>
@@ -19,7 +19,7 @@
       </el-form-item>
       <br>
       <el-form-item>
-        <el-button type="success" plain @click="insertBoard2()">添加</el-button>
+        <el-button type="success" round style="width: 200px" @click="insertBoard2()">添加</el-button>
       </el-form-item>
     </el-form>
   </div>

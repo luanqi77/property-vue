@@ -29,7 +29,7 @@
           </el-submenu>
 
           <el-submenu index="3">
-            <template slot="title"><router-link  to="/staffMain/manageParking"><i class="el-icon-truck"></i>车位管理</router-link></template>
+            <template slot="title"><router-link  to="/staffMain/parkingSpaces"><i class="el-icon-truck"></i>车位管理</router-link></template>
           </el-submenu>
 
 

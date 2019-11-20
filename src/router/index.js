@@ -204,7 +204,7 @@ export default new Router({
           component:noPermission
         },
         {
-          path:'/parkingSpaces',
+          path:'parkingSpaces',
           name:'parkingSpaces',
           component:parkingSpaces
         },

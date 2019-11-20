@@ -1,42 +1,48 @@
 <template>
-  <div style="width: 80%;height: 600px;margin: auto">
-  <div style="margin-left:300px;width: 100%;margin: auto">
-    <el-table :data="board" style="width: 1500px;margin: auto">
+  <div style="width: 100%;height: 600px;margin: auto">
+  <div style="margin: auto">
+    <el-table :data="board" stripe style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)">
       <el-table-column
         prop="boardId"
         label="编号"
-        width="100">
+        width="100"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="boardDeso"
         label="公告描述"
-        width="300">
+        width="755"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="boardTime"
         label="公告时间"
         :formatter="dateFormat"
-        width="240">
+        width="240"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="level"
-        label="等级">
+        label="等级"
+        align="center">
       </el-table-column>
       <el-table-column
         prop="title"
         label="标题"
-        width="250">
+        width="250"
+        align="center">
       </el-table-column>
-      <el-table-column label="操作" width="180">
+      <el-table-column label="操作" width="200" align="center">
         <template slot-scope="board">
-          <el-button type="primary"  plain @click="updateBoard(board.row.boardId)">修改</el-button>
+          <el-button type="primary"  round @click="updateBoard(board.row.boardId)">修改</el-button>
 
-          <el-button type="danger"  plain @click="deleteBoard(board.row.boardId)">删除</el-button>
+          <el-button type="danger"  round @click="deleteBoard(board.row.boardId)">删除</el-button>
 
         </template>
       </el-table-column>
 
     </el-table>
+    <br/>
     <el-pagination
       background
       layout="prev, pager, next"
@@ -46,9 +52,10 @@
       :current-page="this.params.page">
     </el-pagination>
   </div>
+    <br/>
   <div>
       <!--<el-button type="success" icon="el-icon-check" circle @click="insertBoard()"></el-button>-->
-      <el-button type="success" plain @click="insertBoard()">新增</el-button>
+      <el-button type="success" round @click="insertBoard()">新增</el-button>
   </div>
   </div>
 </template>
@@ -61,7 +68,7 @@
         board: [],
         params:{
           page:'1',
-          size:'3',
+          size:'4',
         },
         total:""
       }
@@ -112,7 +119,11 @@
           });
         })
 
-      }
+      },
+      dateFormat:function(row,column){
+        var t=new Date(row.boardTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
+      },
     }
   }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div style="width: 80%;height: 600px;margin: auto">
     <div style="margin-left:400px;width: 100%">
-      <el-table :data="parkingspaces" style="width: 1500px;margin: auto">
+      <el-table :data="parkingspaces" style="width: 500px;margin: auto;">
         <el-table-column
           prop="userId"
           label="用户ID"
@@ -16,20 +16,21 @@
 
         <el-table-column label="操作" width="180">
           <template slot-scope="parkingspaces">
-            <el-button type="primary" plain @click="updateParkingSpaces(parkingspaces.row.up_id)">修改</el-button>
+            <el-button type="primary" round @click="updateParkingSpaces(parkingspaces.row.up_id)">修改</el-button>
 
             <!--<el-button type="danger" plain @click="deleteInformation(information.row.inid)">删除</el-button>-->
 
           </template>
         </el-table-column>
       </el-table>
+      <br/>
       <el-pagination
         background
         layout="prev, pager, next"
         :page-size="this.params.size"
         v-on:current-change="changePage"
         :total="total"
-        :current-page="this.params.page" style="margin-left: -1250px">
+        :current-page="this.params.page" style="margin-left: -200px">
       </el-pagination>
     </div>
     <!--<div>-->
