@@ -146,7 +146,6 @@
       },
       applied:function (applyId) {
         var url='api/updateApplyStatus'
-        alert(applyId)
         axios.post(url,{applyId:applyId}).then(res=>{
           if(res.data=="未登录"){
             alert("您好，请登录")
