@@ -4,6 +4,7 @@
     <div style="width: 75%;height: 80%;margin: auto;margin-top: 40px">
       <img src="../assets/advise/kefu.jpg" style="float: left">
       <h2 style="color: green;float: left;margin-top: 80px" >请填写您的宝贵意见或投诉内容，我们将及时给您反馈</h2><br>
+      <el-button @click="myadvise()">历史记录</el-button>
       <el-form ref="form" :model="advise" label-width="80px">
         <el-form-item label="" >
           <el-input type="textarea" v-model="advise.description" placeholder="请在此处填写您的意见或投诉内容"></el-input>
@@ -27,6 +28,7 @@
   import ElForm from "../../node_modules/element-ui/packages/form/src/form";
   export default {
     components: {
+      ElButton,
       ElForm,
       ElMenu},
     data() {
@@ -81,6 +83,9 @@
               }
             })
           }
+      },
+      myadvise:function () {
+        this.$router.push({path:'/myadvise'})
       }
     }
   }

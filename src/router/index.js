@@ -45,6 +45,9 @@ import boardinfo from '@/components/boardinfo'
 import informationinfo from '@/components/informationinfo'
 import parkingSpaces from '@/components/parkingSpaces'
 import updateParkingSpaces from '@/components/updateParkingSpaces'
+import myadvise from '@/components/myadvise'
+import replyinfo from '@/components/replyinfo'
+
 
 import noPermission from '@/components/noPermission'
 import insertUserMessage from '@/components/insertUserMessage'
@@ -267,7 +270,13 @@ export default new Router({
           component:boardinfo},
         {path:'/informationinfo/:inid',
           name:'informationinfo',
-          component:informationinfo}
+          component:informationinfo},
+        {path:'/replyinfo/:adviseid',
+          name:'replyinfo',
+          component:replyinfo},
+        {path:'/myadvise',
+          name:'myadvise',
+          component:myadvise}
       ]
     }
   ]
