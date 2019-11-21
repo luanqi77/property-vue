@@ -51,7 +51,7 @@
       },
       getreplyinfo:function () {
           var adviseId = this.$route.params.adviseid
-        alert(adviseId);
+//        alert(adviseId);
         var url='api/selectReplyByAdviseId?adviseId='+adviseId
         axios.get(url).then(res=>{
           this.replys=res.data;

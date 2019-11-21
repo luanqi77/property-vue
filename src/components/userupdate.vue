@@ -141,7 +141,7 @@
           this.repeatpassword==''
         }else{
             this.user.password==this.repeatpassword
-          alert(this.user.password);
+//          alert(this.user.password);
         }
       }
     }
