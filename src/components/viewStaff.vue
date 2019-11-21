@@ -1,5 +1,11 @@
 <template>
   <div style="width: 100%">
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>员工管理</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div style="width: 100%;">
       <span style="font-size: 20px;color: darkgray;
       margin:auto;height: 50px;line-height: 50px">员工信息</span>

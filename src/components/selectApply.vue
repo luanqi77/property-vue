@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>报修处理</el-breadcrumb-item>
+        <el-breadcrumb-item>未处理报修信息</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
         :data="apply"

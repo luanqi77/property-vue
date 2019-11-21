@@ -1,5 +1,12 @@
 <template>
   <div style="width: 100%;">
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>员工管理</el-breadcrumb-item>
+        <el-breadcrumb-item>新增员工</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div style="width: 500px;height:500px;margin-left: 100%;margin-top: 100px">
       <el-form ref="form" :model="staff" label-width="80px" >
         <el-form-item label="员工姓名">
@@ -97,12 +104,6 @@
           this.$message({message: '员工工号不能为空', type: 'warning'})
         }
       },
-      checkStaffRoleId:function () {
-        if(this.staff.roleId==''){
-          this.$message({message: '员工职责不能为空', type: 'warning'})
-        }
-      },
-
     }
   }
 
