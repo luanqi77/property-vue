@@ -1,18 +1,21 @@
 <template>
   <div style="width: 100%;height:100%">
-    <h3 style="color: cornflowerblue;margin-bottom: -25px;margin-top: 30px">个人信息修改</h3>
+    <h3 style="color: cornflowerblue;margin-bottom: -150px;margin-top: 30px">个人信息修改</h3>
     <el-form ref="form" :model="user" label-width="35%" style="width: 50%;margin: auto">
       <el-form-item label="">
         <el-input v-model="user.userId" type="hidden"></el-input>
       </el-form-item>
+      <!--<el-form-item label="">-->
+        <!--<el-input v-model="user.password" type="hidden"></el-input>-->
+      <!--</el-form-item>-->
       <el-form-item label="用户名">
-      <el-input v-model="user.username" style="width: 65%;margin-left: -125px">sssss</el-input>
+      <el-input v-model="user.username" style="width: 65%;margin-left: -125px"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-      <el-input v-model="newpassword" style="width: 65%;margin-left: -125px" placeholder="请输入新密码"></el-input>
+      <el-input v-model="user.password" type="password" @blur="check()" style="width: 65%;margin-left: -125px" placeholder="请输入新密码"></el-input>
       </el-form-item>
       <el-form-item label="确认密码">
-      <el-input v-model="repeatpassword" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>
+      <el-input v-model="repeatpassword"  type="password" @blur="confirmpassword()" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>
       </el-form-item>
       <!--<el-form-item label="确认密码">-->
       <!--<el-input v-model="user.username" style="width: 65%;margin-left: -125px" placeholder="请确认新密码"></el-input>-->
@@ -70,7 +73,8 @@
               pic:''
           },
           repeatpassword:'',
-        newpic:''
+        newpw:'',
+          newpic:''
       }
     },
     mounted(){
@@ -123,6 +127,22 @@
               });
             }
         })
+      },
+      check:function () {
+        var reg = /^[0-9]{6,11}$/;
+        if(this.user.password==''||reg.test(this.user.password)==false){
+          this.$message.error('密码格式不正确，6-11位数字')
+          this.user.password=''
+        }
+      },
+      confirmpassword:function () {
+        if(this.user.password!=this.repeatpassword){
+          this.$message.error('密码重复输入错误，请重试')
+          this.repeatpassword==''
+        }else{
+            this.user.password==this.repeatpassword
+          alert(this.user.password);
+        }
       }
     }
   }
