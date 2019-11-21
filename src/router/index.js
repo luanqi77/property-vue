@@ -79,6 +79,11 @@ export default new Router({
       component: getword
     },
     {
+      path:'/ApplyText',
+      name:'ApplyText',
+      component:ApplyText
+    },
+    {
       path: '/login',
       name: 'login',
       component: login
