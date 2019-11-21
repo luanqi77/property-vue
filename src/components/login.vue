@@ -68,7 +68,7 @@
   </div>
 </template>
 <script>
-  import '@/assets/css/base.css';
+  //import '@/assets/css/base.css';
 //  import $ from "jquery";
 //  import wx from "weixin-js-sdk";
   import axios from 'axios'
@@ -123,7 +123,7 @@
             .then(function (response) {
               if(response.data == 'succeed'){
                 loadingInstance.close();
-                that.$router.push({path : 'userinfo'})
+                that.$router.push({path : '/userinfo'})
 
               }else{
                 loadingInstance.close();
@@ -135,6 +135,25 @@
             });
 
         }else{
+//          var url='api/userLogin'
+//          const that = this;
+//          axios.post(url, {
+//            username: this.names,        // 参数 firstName
+//            password: this.passw    // 参数 lastName
+//          })
+//            .then(function (response) {
+//              if(response.data == 'succeed'){
+//                loadingInstance.close();
+//                that.$router.push({path : '/'})
+//
+//              }else{
+//                loadingInstance.close();
+//                alert('账号或密码错误')
+//              }
+//
+//            }).catch(function (error) {
+//            console.log(error);
+//          });
           var url='api/StaffLogin'
           const that = this;
           axios.post(url, {
@@ -142,18 +161,16 @@
             password: this.passw    // 参数 lastName
           })
             .then(function (response) {
-              if(response.data == 'succeed'){
+              if(response.data == 'success'){
                 that.$router.push({path:"staffMain/staffMessage"})
 
               }else{
-                loadingInstance.close();
                 alert('账号或密码错误')
               }
 
             }).catch(function (error) {
             console.log(error);
           });
-
         }
 
       },

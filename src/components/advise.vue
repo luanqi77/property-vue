@@ -8,8 +8,11 @@
         <el-form-item label="" >
           <el-input type="textarea" v-model="advise.description" placeholder="请在此处填写您的意见或投诉内容"></el-input>
         </el-form-item>
-        <el-form-item style="margin-top: 50px">
-          <el-button type="primary" @click="onSubmit">确认提交</el-button>
+        <el-form-item label="" style="height: 0px">
+          <el-input type="hidden" v-model="advise.userId"></el-input>
+        </el-form-item>
+        <el-form-item style="margin-top: 28px">
+          <el-button type="primary" @click="onSubmit()">确认提交</el-button>
           <el-button  @click="goback()">取消</el-button>
         </el-form-item>
       </el-form>
@@ -34,12 +37,50 @@
           }
       }
     },
+    mounted(){
+      this.advise.userId  = this.$parent.user.userId;
+    },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
       goback:function () {
         this.$router.push({path:'/news'})
+      },
+      onSubmit:function () {
+          if(this.advise.description==''){
+            this.$alert('输入的内容不能为空', '提示', {
+              confirmButtonText: '确定',
+              callback: action => {
+//                this.$message({
+//                  type: 'info',
+//                  message: `action: ${ action }`
+//                });
+              }
+            })
+          }else {
+            var url = 'api/insertAdvise'
+            axios.post(url, this.advise).then(res => {
+              if (!(res.data == 'fail')) {
+                this.$notify({
+                  title: '成功',
+                  message: '建议已成功提交',
+                  type: 'success'
+                });
+                this.$router.push({path:'/news'})
+              } else {
+                this.$alert('请输入内容', '提示', {
+                  confirmButtonText: '确定',
+                  callback: action => {
+                    this.$message({
+                      type: 'info',
+                      message: `action: ${ action }`
+                    });
+                  }
+                });
+              }
+            })
+          }
       }
     }
   }

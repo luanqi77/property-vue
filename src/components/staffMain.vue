@@ -6,7 +6,7 @@
       </div>
       <!--<el-input type="text" v-model="searchInput"placeholder="输入用户关键信息" style="width: 300px;margin-left: -800px"></el-input>-->
       <!--<el-button style="width: 70px;text-align: center;margin-left: -4px;margin-top: -40px" @click="search()">搜索</el-button>-->
-      <span style="margin-left: 950px;font-size: 18px">{{Staff.staffName}},您好</span>
+      <span style="margin-left: 300px;font-size: 18px">{{Staff.staffName}},您好</span>
       <el-button type="danger" round style="font-size: 15px;margin-left: 40px;margin-top: 35px;" @click="loginout()">注销</el-button>
       <el-button type="primary" round style="font-size: 15px;margin-right: -600px;margin-top: 35px;" @click="staffInfo()">个人信息</el-button>
 
@@ -17,7 +17,11 @@
       <el-aside width="250px" style="background-color: rgb(238, 241, 246);height: 800px">
         <el-menu :default-openeds="['1', '8']">
           <el-submenu index="1">
-            <template slot="title"><router-link  to="/staffMain/propertyAccount"><i class="el-icon-office-building"></i>业主信息</router-link></template>
+            <template slot="title" ><i class="el-icon-office-building"></i>业主信息</template>
+            <el-menu-item-group>
+              <el-menu-item index="1-1"><router-link  to="/staffMain/propertyAccount">信息管理</router-link></el-menu-item>
+              <el-menu-item index="1-2"><router-link  to="/staffMain/staffMessage">缴费率</router-link></el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
 
           <el-submenu index="2">
@@ -29,7 +33,7 @@
           </el-submenu>
 
           <el-submenu index="3">
-            <template slot="title"><router-link  to="/staffMain/manageParking"><i class="el-icon-truck"></i>车位管理</router-link></template>
+            <template slot="title"><router-link  to="/staffMain/parkingSpaces"><i class="el-icon-truck"></i>车位管理</router-link></template>
           </el-submenu>
 
 
@@ -118,7 +122,6 @@
        var url="api/getCurrentStaff"
         axios.get(url).then(res=>{
             this.Staff=res.data;
-            alert(res.data)
             console.log(res.data)
         })
       },
@@ -133,9 +136,9 @@
                 message: '自动返回主页',
                 type: 'success'
               });
-              this.$router.push({path:"/index"})
+              this.$router.push({path:"/login"})
             }else {
-                alert("网络不佳")
+              this.$router.push({path:"/login"})
             }
         })
       },

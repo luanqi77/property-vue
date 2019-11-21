@@ -25,7 +25,7 @@
           <el-table
             :data="parks"
             stripe
-            style="width: 40%;float:left;margin-top: 20px;height: 100%">
+            style="width: 25%;float:left;margin-top: 20px;height: 100%">
             <el-table-column
               prop="park_id"
               label="车位编号"
@@ -69,6 +69,7 @@
           hotFee:'',
           propertyFee:''
         },
+//        userId:'',
         parks:[],
         pics:[
           {src:require('../assets/house/car1.jpg')},
@@ -87,15 +88,22 @@
         console.log(key, keyPath);
       },
       queryHouse:function () {
-        var bd = this.$route.params.userid;
+        var bd = this.$parent.user.userId
         var url='api/findHouseById'
         axios.post(url,{userId:bd}).then(res=>{
           this.house=res.data;
         })
         this.queryPark();
       },
+//      getUser:function () {
+//        var url='api/findSession'
+//        axios.get(url).then(res=>{
+//          this.userId=res.data.userId
+//        })
+//        this.queryHouse();
+//      },
       queryPark:function () {
-        var url='api/selectParkingById/'+11;
+        var url='api/selectParkingById/'+this.$parent.user.userId;;
         axios.get(url).then(res=>{
           this.parks=res.data;
         })

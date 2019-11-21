@@ -7,39 +7,40 @@
       <el-table
         :data="staff"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-        :row-class-name="tableRowClassName">
+        stripe>
 
         <el-table-column
           prop="realName"
           label="员工姓名"
-          width="380"
+          width="400"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="staffNumber"
           label="员工工号"
-          width="380"
+          width="400"
           align="center"
         >
         </el-table-column>
         <el-table-column
           prop="roleName"
           label="员工职责"
-          width="380"
+          width="400"
           align="center"
         >
+          <template slot-scope="staff">
+            {{ staff.row.roleName=="admin"? '超级管理员' : '物业管家' }}
+          </template>
         </el-table-column>
         <el-table-column
           label="操作"
-          width="420"
+          width="423"
           align="center"
         >
           <template slot-scope="staff">
-            <el-button type="primary" plain @click="deleteStaff(staff.row.staffId)">删除</el-button>
-          </template>
-          <template slot-scope="staff">
-            <el-button type="primary" plain @click="toUpdtaeStaff(staff.row.staffId)">修改</el-button>
+            <el-button type="danger" round @click="deleteStaff(staff.row.staffId)">删除</el-button>
+            <el-button type="primary" round @click="toUpdtaeStaff(staff.row.staffId)">修改</el-button>
           </template>
         </el-table-column>
 
@@ -96,6 +97,14 @@
       query:function () {
         var url = '/api/findStaff'
         axios.post(url,{currentPage:this.params.page,pageSize:this.params.size}).then(res => {
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           this.staff = res.data.staffs;
           this.total=res.data.total;
         })
@@ -106,9 +115,17 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          var url='/api/deleteStaffById'
+          var url='/api/delStaff'
           axios.post(url, {staffId: staffId}).then(res => {
-            if (res.data == 1) {
+            if(res.data=="未登录"){
+              alert("您好，请登录")
+              this.$router.push({path:'/login'})
+            }
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
+            if (res.data =="success") {
               this.query();
             } else {
               alert("删除失败")

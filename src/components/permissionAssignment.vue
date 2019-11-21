@@ -64,6 +64,14 @@
       var staffId=this.$route.params.staffId;
       var url='api/getStaffInfo?staffId='+staffId
       axios.post(url).then(res=>{
+        if(res.data=="未登录"){
+          alert("您好，请登录")
+          this.$router.push({path:'/login'})
+        }
+        if (res.data=="权限不足"){
+          alert(res.data)
+          this.$router.push({path:'/staffMain/noPermission'})
+        }
           this.staff=res.data;
       })
 
@@ -76,6 +84,14 @@
       submitForm:function () {
           var url='api/updateRole'
           axios.post(url,{roleId:this.staff.roleId,staffId:this.staff.staffId}).then(res=>{
+            if(res.data=="未登录"){
+              alert("您好，请登录")
+              this.$router.push({path:'/login'})
+            }
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
             if (res.data=="success") {
               this.$message({
                 message: '修改成功',
@@ -89,16 +105,26 @@
       },
       updateStaffPassword:function () {
         var staffId=this.$route.params.staffId;
-        var url='api/resetPassword?staffNumber='+this.staffNumber
+        var url='api/resetStaffPassword?staffNumber='+this.staff.staffNumber
         axios.post(url).then(res=>{
-          if (res.data=="ok") {
-            this.$message({
-              message: '重置成功',
-              type: 'success'
-            });
-          }else {
-            this.$message.error('重置失败')
-          }
+            if(res.data=="未登录"){
+                alert("未登录")
+              this.$router.push({path:'/login'})
+            }else {
+              if (res.data=="权限不足"){
+                alert(res.data)
+                this.$router.push({path:'/staffMain/noPermission'})
+              }
+              if (res.data=="success") {
+                this.$message({
+                  message: '重置成功',
+                  type: 'success'
+                });
+                this.$router.push({path:'/staffMain/viewStaff'})
+              }else {
+                this.$message.error('重置失败')
+              }
+            }
         })
       }
     }

@@ -4,18 +4,18 @@
       <span class="demonstration">查询日期 :</span>
       <el-date-picker
         v-model="value2"
-        type="datetime"
+        type="date"
         placeholder="选择日期时间"
         align="right"
         :picker-options="pickerOptions">
       </el-date-picker>
-      <el-button type="primary" @click="selectLog()" >搜索</el-button>
+      <el-button type="primary" @click="query()" >搜索</el-button>
     </div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
-        :data="operateLog"
+        :data="logInfos"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-        :row-class-name="tableRowClassName">
+        stripe>
         <el-table-column
           prop="logId"
           label="序号"
@@ -24,24 +24,24 @@
         >
         </el-table-column>
         <el-table-column
-          prop="operateType"
+          prop="method"
           label="操作类型"
-          width="452"
+          width="500"
           align="center"
         >
         </el-table-column>
         <el-table-column
-          prop="operateTime"
+          prop="executeTime"
           label="操作时间"
-          width="330"
+          width="400"
           align="center"
           :formatter="dateFormat"
         >
         </el-table-column>
         <el-table-column
-          prop="staffName"
+          prop="staffNumber"
           label="操作人"
-          width="330"
+          width="392"
           align="center"
         >
         </el-table-column>
@@ -71,6 +71,15 @@
 
 
 </template>
+<style>
+  .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
 <script>
   import axios from 'axios'
   import ElButton from "../../node_modules/element-ui/packages/button/src/button";
@@ -78,7 +87,7 @@
     components: {ElButton},
     data() {
       return {
-        operateLog:[],
+        logInfos:[],
         params: {
           page: '1',
           size: '10',
@@ -129,14 +138,23 @@
         this.query();
       },
       query:function () {
-        var url = '/api/operateLogFindAll/'+this.params.page+"/"+this.params.size
-        axios.get(url).then(res => {
-          this.operateLog = res.data.list;
-          this.total=res.data.total;
+        var url = '/api/findLogInfo'
+        axios.post(url,{currentPage:this.params.page,pageSize:this.params.size,logDate:this.value2}).then(res => {
+            if (res.data=="未登录"){
+                alert("请您登录！")
+              this.$router.push({path:'/login'})
+            }else {
+              if (res.data=="权限不足"){
+                alert(res.data)
+                this.$router.push({path:'/staffMain/noPermission'})
+              }
+              this.logInfos = res.data.logInfos;
+              this.total=res.data.total;
+            }
         })
       },
       dateFormat:function(row,column){
-        var t=new Date(row.createTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
+        var t=new Date(row.executeTime);//row 表示一行数据, updateTime 表示要格式化的字段名称
         return t.getFullYear()+"-"+(t.getMonth()+1)+"-"+t.getDate();
       },
       selectLog:function () {

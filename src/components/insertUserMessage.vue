@@ -9,7 +9,7 @@
           <el-input v-model="user.tel" @blur="checkTel()"></el-input>
         </el-form-item><br>
         <el-form-item label="用户房号">
-          <el-input v-model="user.houseId" @blur="checkHouseId()"></el-input>
+          <el-input v-model="houseId" @blur="checkHouseId()"></el-input>
         </el-form-item><br>
 
         <el-form-item>
@@ -31,8 +31,8 @@
         user:{
             realname:'',
             tel:'',
-            houseId:''
         },
+        houseId:''
       }
     },
 
@@ -42,23 +42,32 @@
     methods:{
       submitForm:function () {
         var url='api/insertUser'
-        axios.post(url,this.user).then(res=>{
+        console.log(this.user+this.houseId)
+        axios.post(url,{user:this.user,houseId:this.houseId}).then(res=>{
             if (res.data=="未登录"){
                 alert("请您登陆")
-                this.$router.push({path:'/index'})
+                this.$router.push({path:'/login'})
             }else {
                 if (res.data=="房屋已存在住户"){
                     alert(res.data)
                 }else {
-                  if (res.data=="success") {
-                    this.$message({
-                      message: '添加成功',
-                      type: 'success'
-                    });
-                    this.$router.push({path:'/staffMain/propertyAccount'})
-                  }else {
-                    this.$message.error('添加失败')
-                  }
+                    if (res.data=="房屋不存在"){
+                        alert(res.data)
+                    }else {
+                      if (res.data=="权限不足"){
+                        alert(res.data)
+                        this.$router.push({path:'/staffMain/noPermission'})
+                      }
+                      if (res.data=="success") {
+                        this.$message({
+                          message: '添加成功',
+                          type: 'success'
+                        });
+                        this.$router.push({path:'/staffMain/propertyAccount'})
+                      }else {
+                        this.$message.error('添加失败')
+                      }
+                    }
                 }
             }
          })

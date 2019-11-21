@@ -1,14 +1,22 @@
 <template>
   <div style="width: 100%">
     <el-input type="text" v-model="params.searchInput"placeholder="输入用户关键信息"
-              style="width: 300px;margin-top: 30px;margin-left: 35%"></el-input>
+              style="width: 300px;margin-top: 30px;"></el-input>
     <el-button style="width: 70px;text-align: center;margin-left: -4px;
     margin-top: -40px;margin-bottom: 5px" type="primary" @click="search()">搜索</el-button>
 
     <el-table
       :data="user"
       style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-      :row-class-name="tableRowClassName">
+      stripe>
+      <el-table-column
+        prop="userId"
+        label="业主序号"
+        width="360"
+        align="center"
+        v-if="show"
+      >
+      </el-table-column>
 
       <el-table-column
         prop="realName"
@@ -40,22 +48,17 @@
       </el-table-column>
       <el-table-column
       label="操作"
-      width="360"
+      width="343"
       align="center"
       >
-      <template slot-scope="staff">
-      <el-button type="primary" plain @click="levyFees(user.row.userId)">催费</el-button>
-      </template>
-        <template slot-scope="staff">
-      <el-button type="primary" plain @click="toUpdateUser(user.row.userId)">修改</el-button>
-      </template>
-        <template slot-scope="staff">
-      <el-button type="danger" plain @click="delUser(user.row.userId)">删除</el-button>
+        <template slot-scope="user">
+          <el-button type="primary" round @click="toUpdateUser(user.row.userId)">修改</el-button>
+      <el-button type="primary" round @click="levyFees(user.row.userId)">催费</el-button>
+      <el-button type="danger" round @click="delUser(user.row.userId)">删除</el-button>
       </template>
       </el-table-column>
     </el-table>
     <br/>
-    <div style="margin-left: 50%">
     <el-pagination
       background
       layout="prev, pager, next"
@@ -66,7 +69,6 @@
       >
     </el-pagination>
     <el-button  type="primary" round style="font-size: 15px;margin-top: 20px;" @click="insertUser()">新增用户</el-button>
-    </div>
   </div>
 
 
@@ -104,15 +106,37 @@
         this.params.page=page
         this.search();
       },
+      delUser:function (userId) {
+        var url='api/removeMaster'
+        axios.post(url,{userId:userId}).then(res=>{
+          if(res.data=="未登录"){
+            alert("请您登陆")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
+          if(res.data=="success"){
+            alert("已清空用户")
+            this.search();
+          }
+        })
+
+      },
       search:function () {
         var url = '/api/findUserAccount'
         console.log(this.params)
-        axios.post(url,this.params).then(res => {
+        axios.post(url,{currentPage:this.params.page,pageSize:this.params.size,keywords:this.params.searchInput}).then(res => {
             if(res.data=="未登录"){
                 alert("您好，请登录")
-              //this.$router.push({path:'/index'})
+              this.$router.push({path:'/login'})
             }else{
-              this.user = res.data.list;
+                if (res.data=="权限不足"){
+                  alert(res.data)
+                  this.$router.push({path:'/staffMain/noPermission'})
+                }
+              this.user = res.data.userAccounts;
               this.total=res.data.total;
             }
         })
@@ -122,31 +146,22 @@
           axios.post(url).then(res=>{
             if(res.data=="未登录"){
               alert("您好，请登录")
-              //this.$router.push({path:'/index'})
+              this.$router.push({path:'/login'})
             }else{
+              if (res.data=="权限不足"){
+                alert(res.data)
+                this.$router.push({path:'/staffMain/noPermission'})
+              }
               if (res.data=="success"){
                 alert("催费提醒短信发送成功")
               }
             }
           })
       },
-      delUser:function (id) {
-        var url='api/removeMaster'
-        alert(id)
-        axios.post(url,{id:id}).then(res=>{
-            if(res.data=="未登录"){
-                alert("请您登陆")
-              this.$router.push({path:'/index'})
-            }
-            if(res.data=="success"){
-                alert("已清空用户")
-              this.search();
-            }
-        })
 
-      },
       toUpdateUser:function (id) {
-        this.$router.push({path: 'staffMain/updateUserMessage/' + id})
+
+        this.$router.push({path: 'updateUserMessage/' + id})
       },
       insertUser:function () {
         this.$router.push({path:'insertUserMessage'})
@@ -155,3 +170,4 @@
   }
 
 </script>
+

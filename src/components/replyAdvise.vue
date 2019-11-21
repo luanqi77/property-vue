@@ -4,7 +4,7 @@
       <el-table
         :data="advise"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-        :row-class-name="tableRowClassName">
+        stripe>
         <el-table-column
           prop="adviseId"
           label="序号"
@@ -32,6 +32,7 @@
           label="状态"
           width="200"
           align="center"
+          :class=""
         >
         </el-table-column>
         <!--<el-table-column-->
@@ -107,8 +108,12 @@
         axios.get(url).then(res => {
             if(res.data=="未登录"){
                 alert("请您先去登录！")
-              this.$router.push({path:'/index'})
+              this.$router.push({path:'/login'})
             }else {
+                if (res.data=="权限不足"){
+                    alert(res.data)
+                  this.$router.push({path:'/staffMain/noPermission'})
+                }
               this.advise = res.data.list;
               this.total=res.data.total;
             }
@@ -135,3 +140,12 @@
   }
 
 </script>
+<style>
+  .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
