@@ -3,7 +3,7 @@
     <div style="margin-left: 10px;margin-top: 15px">
       <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
         <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
-        <el-breadcrumb-item>查看投诉</el-breadcrumb-item>
+        <el-breadcrumb-item>投诉建议</el-breadcrumb-item>
         <el-breadcrumb-item>查看回复</el-breadcrumb-item>
       </el-breadcrumb>
     </div>

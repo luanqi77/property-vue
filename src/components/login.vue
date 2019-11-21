@@ -4,7 +4,7 @@
       <el-row class="boxsmf">
         <el-col class="boxsmfleft" :span="12">
           <div class="grid-content bg-purple">
-            <p>LOGO</p>
+            <p><img src="../assets/index/logo1.png" width="80%"></img></p>
             <span>Welcome</span>
             <i id="ima">{{ mes }}</i>
           </div>
@@ -81,7 +81,7 @@
     data() {
       return {
         radio: '2',
-        mes: "欢迎巨翔物业",
+        mes: "飞翔物业欢迎您！",
         names : '',
         passw : '',
         src1:''

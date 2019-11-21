@@ -4,7 +4,7 @@
       <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
         <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
         <el-breadcrumb-item>网站维护</el-breadcrumb-item>
-        <el-breadcrumb-item>便名服务</el-breadcrumb-item>
+        <el-breadcrumb-item>便民服务</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
   <div style="margin: auto;margin-top: 5px">

@@ -63,7 +63,7 @@
               <el-menu-item index="8-1"><router-link  to="/boardList">社区公告</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
-              <el-menu-item index="8-2"><router-link  to="/InformationList">便名服务</router-link></el-menu-item>
+              <el-menu-item index="8-2"><router-link  to="/InformationList">便民服务</router-link></el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

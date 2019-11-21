@@ -18,6 +18,9 @@
         <el-form-item label="用户房号">
           <el-input v-model="houseId" @blur="checkHouseId()"></el-input>
         </el-form-item><br>
+        <el-form-item label="用户邮箱">
+          <el-input v-model="user.email" @blur="checkEmail()"></el-input>
+        </el-form-item><br>
 
         <el-form-item>
           <el-button type="primary" round @click="submitForm()" style="width: 200px">提交</el-button>
@@ -38,6 +41,7 @@
         user:{
             realname:'',
             tel:'',
+            email:''
         },
         houseId:''
       }
@@ -88,6 +92,11 @@
       checkTel:function () {
         if(this.user.tel==''){
           this.$message({message: '电话不能为空', type: 'warning'})
+        }
+      },
+      checkEmail:function () {
+        if(this.user.email==''){
+          this.$message({message: '邮箱不能为空', type: 'warning'})
         }
       },
 
