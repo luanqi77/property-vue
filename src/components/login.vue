@@ -56,6 +56,8 @@
         </el-col>
       </el-row>
     </div>
+
+
 <!--    <div class="popupBox" style="display:none">
       <p>二维码扫描失败</p>
       <p>此微信未绑定或未注册，请选择</p>

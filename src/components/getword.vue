@@ -86,6 +86,7 @@ export default {
       var passid = this.passid;
       var phoneid = this.phoneid;
       var url = 'api/resetPassword'
+      const that = this;
       axios.post(url, {
           tel: passid,
           code:yam,
@@ -97,7 +98,8 @@ export default {
           //跳转用户页面
           console.log(response);
           if(response.data == 'ok'){
-              alert('成功，密码为6个1')
+           alert('成功，密码为6个1')
+            that.$router.push({path : '/login'})
           }else{
             alert('失败')
           }

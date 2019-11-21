@@ -16,7 +16,7 @@
                   type="text"
                   placeholder="请输入账号"
                   @focus="inp($event)"
-                  @blur="inb($event);inpname($event)"
+                  @blur="inb($event);inpname($event);checkname($event)"
                 />
               </li>
               <li>
@@ -38,7 +38,7 @@
                   type="number"
                   placeholder="请输入预留手机号"
                   @focus="inp($event)"
-                  @blur="inb($event);inps($event)"
+                  @blur="inb($event);ong($event)"
                 />
               </li>
               <li>
@@ -89,6 +89,7 @@
     methods: {
       denglu: function (event) {
         var url = 'api/regist'
+        const that = this;
         axios.post(url, {
           username: this.nameid,        // 参数 firstName
           password: this.passid,    // 参数 lastName
@@ -99,10 +100,12 @@
 //            loadingInstance.close();
             //跳转用户页面
             if (response.data == '注册成功！') {
-              console.log(response);
-              this.$router.push({
-                path: "/login"
-              })
+//              console.log(response);
+            alert(response.data)
+              that.$router.push({path : 'login'})
+
+            }else {
+                alert("注册失败")
             }
 
 
@@ -123,6 +126,49 @@
         input.parentNode.style.borderBottom = "1px solid #C5C6D3";
         input.parentElement.firstChild.style.color = "rgba(85,94,122,1)";
       },
+      ong : function(event){
+        var phoneid =this.phoneid;
+        var url = 'api/checkTel'
+        axios.post(url, {
+          tel: phoneid
+        })
+          .then(function (response) {
+//            loadingInstance.close();
+            //跳转用户页面
+            if(response.data == 'succeed'){
+              console.log(response);
+            }else{
+              alert('请输入预留的手机号')
+            }
+            console.log(response);
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+      checkname : function(event){
+        var nameid =this.nameid;
+        var url = 'api/checkName'
+        axios.post(url, {
+          username: nameid
+        })
+          .then(function (response) {
+//            loadingInstance.close();
+            //跳转用户页面
+            if(response.data == 'succeed'){
+
+              alert('此用户名已存在')
+            }else{
+              console.log(response);
+            }
+            console.log(response);
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
       inpname: function (event) {
         var nameid = this.nameid;
         if (nameid) {
@@ -141,7 +187,7 @@
           alert('不能为空')
         }
       },
-      inps: function (event) {
+     /* inps: function (event) {
         var phones = this.phoneid;
         var nameid = this.nameid;
         var TEL_REGEXP = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
@@ -156,7 +202,7 @@
         } else {
           alert('手机号错误，请重新输入手机号')
         }
-      },
+      },*/
       second: function (event) {
         var phone = this.phoneid
         var seton = document.getElementsByClassName("seton")[0];

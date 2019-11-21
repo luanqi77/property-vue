@@ -22,7 +22,7 @@ c<template>
             <div style="color: blueviolet"><i class="el-icon-s-tools">&nbsp;&nbsp;&nbsp;<router-link to="userupdate">修改个人信息</router-link></i></div>
           </div>
           <div  id="back2" style="height: 110%">
-            <h3 style="margin: auto;color: limegreen;position: absolute;top: 570px;left: 345px">合作网站</h3>
+            <h3 style="margin: auto;color: limegreen;position: absolute;top: 590px;left: 345px">合作网站</h3>
             <i class="el-icon-platform-eleme" style="margin-top: 110px;color: deepskyblue">&nbsp;<el-link @click="eleme()">饿了么</el-link></i>
             <i class="el-icon-food" style="margin-top: 80px;color: deepskyblue">&nbsp;<el-link @click="meituan()">美团外卖</el-link></i><br><br>
             <i class="el-icon-shopping-cart-1" style="color: orangered;margin-left: -28px">&nbsp<el-link @click="taobao()">淘宝网</el-link></i>
@@ -69,7 +69,7 @@ c<template>
 //          {name:'/userdetail',navItem:'个人中心'},
           {name:'/advise',navItem:'建议投诉'},
           {name:'/apply',navItem:'报修申请'},
-          {name:'/myhouse/',navItem:'我的不动产'},
+          {name:'/myhouse',navItem:'我的不动产'},
           {name:'/informations',navItem:'信息服务'},
           {name:'/pay',navItem:'缴费+账单'}
         ],

@@ -44,6 +44,14 @@
         var url = "api/insertBoard"
 
           axios.post(url, this.board).then(res => {
+            if(res.data=="未登录"){
+              alert("您好，请登录")
+              this.$router.push({path:'/login'})
+            }
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
 
             if (res.data != '0') {
               this.$router.push({path: "/boardList"})
