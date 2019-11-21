@@ -79,6 +79,11 @@ export default new Router({
       component: getword
     },
     {
+      path:'/ApplyText',
+      name:'ApplyText',
+      component:ApplyText
+    },
+    {
       path: '/login',
       name: 'login',
       component: login
@@ -192,11 +197,6 @@ export default new Router({
           path:'/updateBoard/:boardId',
           name:'updateBoard',
           component:updateBoard
-        },
-        {
-          path:'/ApplyText',
-          name:'ApplyText',
-          component:ApplyText
         },
         {
           path:'noPermission',
