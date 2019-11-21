@@ -54,6 +54,10 @@
                     if (res.data=="房屋不存在"){
                         alert(res.data)
                     }else {
+                      if (res.data=="权限不足"){
+                        alert(res.data)
+                        this.$router.push({path:'/staffMain/noPermission'})
+                      }
                       if (res.data=="success") {
                         this.$message({
                           message: '添加成功',

@@ -91,6 +91,10 @@
             alert("请您先去登录！")
             this.$router.push({path:'/index'})
           }else {
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
             this.adviseAndReply = res.data.list;
             this.total=res.data.totalCount;
           }

@@ -63,16 +63,19 @@
     },
 
     mounted(){
-//      var url='api/selectRoles'
-//      axios.post(url).then(res=>{
-//          this.roles=res.data;
-//      })
     },
     methods:{
       submitForm:function () {
-          alert(this.staff.roleId)
         var url='api/insertStaff?roleId='+this.staff.roleId
         axios.post(url,this.staff).then(res=>{
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           if (res.data=="success") {
             this.$message({
               message: '添加成功',

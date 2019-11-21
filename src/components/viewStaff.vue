@@ -7,7 +7,7 @@
       <el-table
         :data="staff"
         style="width: 100% ;font-size: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)"
-        :row-class-name="tableRowClassName">
+        stripe>
 
         <el-table-column
           prop="realName"
@@ -29,6 +29,9 @@
           width="400"
           align="center"
         >
+          <template slot-scope="staff">
+            {{ staff.row.roleName=="admin"? '超级管理员' : '物业管家' }}
+          </template>
         </el-table-column>
         <el-table-column
           label="操作"
@@ -94,6 +97,14 @@
       query:function () {
         var url = '/api/findStaff'
         axios.post(url,{currentPage:this.params.page,pageSize:this.params.size}).then(res => {
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           this.staff = res.data.staffs;
           this.total=res.data.total;
         })
@@ -106,6 +117,14 @@
         }).then(() => {
           var url='/api/delStaff'
           axios.post(url, {staffId: staffId}).then(res => {
+            if(res.data=="未登录"){
+              alert("您好，请登录")
+              this.$router.push({path:'/login'})
+            }
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
             if (res.data =="success") {
               this.query();
             } else {

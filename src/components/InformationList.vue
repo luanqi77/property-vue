@@ -90,6 +90,14 @@
       query:function () {
         var url = 'api/findAllInformationBypage/'+this.params.page+"/"+this.params.size
         axios.get(url).then(res =>{
+          if(res.data=="未登录"){
+            alert("您好，请登录")
+            this.$router.push({path:'/login'})
+          }
+          if (res.data=="权限不足"){
+            alert(res.data)
+            this.$router.push({path:'/staffMain/noPermission'})
+          }
           this.informations = res.data.list;
           this.total=res.data.total;
         })
@@ -117,6 +125,14 @@
           });
           var url = 'api/deleteInformation'
           axios.post(url,{inid:inid}).then(res=>{
+            if(res.data=="未登录"){
+              alert("您好，请登录")
+              this.$router.push({path:'/login'})
+            }
+            if (res.data=="权限不足"){
+              alert(res.data)
+              this.$router.push({path:'/staffMain/noPermission'})
+            }
             this.query();
           })
         }).catch(() => {
