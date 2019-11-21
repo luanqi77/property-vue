@@ -194,7 +194,7 @@ export default new Router({
           component:updateBoard
         },
         {
-          path:'ApplyText',
+          path:'/ApplyText',
           name:'ApplyText',
           component:ApplyText
         },
