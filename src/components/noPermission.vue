@@ -23,7 +23,7 @@
         isTimeout(){
             setTimeout(()=>{
                 this.$router.push({path:'/staffMain/staffMessage'})
-            },5000)
+            },1000)
         },
       back:function () {
         this.$router.push({path:'/staffMain/staffMessage'})

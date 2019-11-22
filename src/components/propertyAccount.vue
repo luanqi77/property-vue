@@ -1,5 +1,11 @@
 <template>
   <div style="width: 100%">
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>业主信息管理</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <el-input type="text" v-model="params.searchInput"placeholder="输入用户关键信息"
               style="width: 300px;margin-top: 30px;"></el-input>
     <el-button style="width: 70px;text-align: center;margin-left: -4px;

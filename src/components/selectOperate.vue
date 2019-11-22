@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>操作记录查看</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div class="block" style="margin-top: 20px">
       <span class="demonstration">查询日期 :</span>
       <el-date-picker

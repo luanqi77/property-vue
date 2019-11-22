@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>报修处理</el-breadcrumb-item>
+        <el-breadcrumb-item>未处理报修信息</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div style="width: 100%;margin-top: 5px">
       <el-table
         :data="apply"
@@ -63,7 +70,7 @@
               align="center"
             >
               <template slot-scope="apply">
-                {{ apply.row.status ? '未回复' : '已回复' }}
+                {{ apply.row.status ? '未处理' : '已处理' }}
               </template>
         </el-table-column>
 
@@ -146,7 +153,6 @@
       },
       applied:function (applyId) {
         var url='api/updateApplyStatus'
-        alert(applyId)
         axios.post(url,{applyId:applyId}).then(res=>{
           if(res.data=="未登录"){
             alert("您好，请登录")

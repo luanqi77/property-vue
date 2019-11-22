@@ -5,8 +5,9 @@
         <img src="../assets/index/logo1.png" width="60%"></img>
       </div>
       <div style="width: 60%;background-color: black;height: 100px;float: right;margin-left: 100px">
-        <h2 style="float: left;margin-left:460px;margin-top: 50px;color: white;width: 100px">业主入口</h2>
         <el-button @click="login()" style="width: 30px;background-color: black;border: 0px solid;margin-left: 155px"><img src="../assets/index/jiantou.gif" height="118px" style="margin-left: -290px"  ></el-button>
+        <router-link  to="/login"><h2 style="float: left;margin-left:460px;margin-top: 50px;color: white;width: 100px">用户入口</h2></router-link>
+
         <!--<el-button type="primary" style="margin-left: 00px;margin-top:-50px;line-height: 30px;width: 100px;height: 50px;margin-top: 2px;background-color: lightskyblue;border: 0px;font-size: 16px">登录/注册</el-button>-->
       </div>
     </div>
@@ -131,7 +132,7 @@
     }
   }
 </script>
-<style>
+<style >
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
@@ -159,5 +160,9 @@
   }
   #back4{
     background-image: url("../assets/index/back6.jpg");
+  }
+  .router-link-active {
+    text-decoration: none;
+    color: white;
   }
 </style>

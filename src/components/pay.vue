@@ -7,7 +7,8 @@
         <h3 style="float: left;line-height: 35px">我的钱包</h3><br>
       </div>
       <div style="height: 20%;width: 80%;margin-top: 45px">
-        <el-button @click="checkpassword()" style="float: left">查看余额</el-button>
+        <!--<el-button @click="checkpassword()" style="float: left">查看余额</el-button>-->
+        <el-button @click="queryMoney()" style="float: left">查看余额</el-button>
       </div>
       <div style="height: 20%;width: 80%;margin-top: 45px">
         <el-button @click="pay()" style="float: left">充值</el-button>
@@ -34,6 +35,9 @@
       return {
       }
     },
+    mounted(){
+//      this.queryMoney();
+    },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
@@ -53,7 +57,33 @@
         })
       },
       checkpassword:function () {
-//        var
+        this.$prompt('请输入密码', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+         inputType:'password',
+//          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+//          inputErrorMessage: '邮箱格式不正确'
+        }).then(({ value }) => {
+          var url = 'api/checkUserPassword'
+          axios.post(url,{password:value}).then(res=>{
+              if(res=='error'){
+                this.$message.error('密码错误');
+              }else{
+                  this.queryMoney();
+              }
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });
+        });
+      },
+      queryMoney:function () {
+        var url = 'api/getUserMoney'
+        axios.post(url,{userId:this.$parent.user.userId}).then(res=>{
+            this.$alert('您的余额为：'+res.data);
+        })
       }
     }
   }

@@ -2,33 +2,31 @@
   <!--<div style="width: 100%;height:6000px;margin: auto;background-color: yellow;margin-top: -50px">-->
   <div  style="width: 100%;height:100%;opacity:93%">
     <div style="height: 70%">
-    <el-table
-      :data="informations"
-      stripe
-      style="width: 60%;margin: auto;margin-top: 20px;height: 100%">
-      <el-table-column
-        prop="servername"
+      <el-table
+        :data="advises"
+        stripe
+        style="width: 60%;margin: auto;margin-top: 20px;height: 100%">
+        <el-table-column
+          prop="adviseTime"
+          label="提交时间"
+          width="140">
+          <template slot-scope="scope" >
+          {{scope.row.adviseTime.substr(0,10)}}
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="description"
+          label="详情">
+        </el-table-column>
+        <el-table-column
+        prop="adviseTime"
         label="服务名称"
         width="140">
         <template slot-scope="scope" >
-          <router-link v-bind:to="/informationinfo/+scope.row.inid" style="text-decoration: none">{{scope.row.servername}}</router-link>
+        <router-link v-bind:to="/replyinfo/+scope.row.adviseId" style="text-decoration: none">查看回复</router-link>
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="connname"
-        label="联系人"
-        width="140">
-      </el-table-column>
-      <el-table-column
-        prop="tel"
-        label="电话"
-        width="140">
-      </el-table-column>
-      <el-table-column
-        prop="company"
-        label="公司名称">
-      </el-table-column>
-    </el-table>
+        </el-table-column>
+      </el-table>
     </div>
     <!--<div style="height: 30%;margin-top: 135px">-->
       <!--<el-carousel trigger="click" height="320px" style="width: 100%">-->
@@ -48,27 +46,20 @@
     components: {ElMenu},
     data() {
       return {
-          informations:[],
-        pics:[
-          {src:require('../assets/information/ad1.jpg')},
-          {src:require('../assets/information/ad2.jpg')},
-          {src:require('../assets/information/ad3.jpg')},
-//          {src:require('../assets/news/lunbo4.jpg')},
-//          {src:require('../assets/news/lunbo5.jpg')}
-        ]
+        advises:[],
       }
     },
     mounted(){
-      this.queryinfomations();
+      this.getadvise();
     },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
-      queryinfomations:function () {
-        var url='api/findAllInformation'
-        axios.get(url).then(res=>{
-            this.informations=res.data;
+      getadvise:function () {
+        var url='api/selectAdviseByUserId'
+        axios.post(url).then(res=>{
+          this.advises=res.data;
         })
       }
     }

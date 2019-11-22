@@ -6,7 +6,7 @@ c<template>
         <div style="width: 100%;height: 35%;background-color: inherit">
           <img src="../assets/userinfo/exit.png" style="float: left;margin-left: 10px;margin-top: 5px" @click="loginout()"/>
           <!--<el-link @click="loginout()"><img src="../assets/userinfo/exit.png" style="float: left;margin-left: 10px;margin-top: 5px" @click="loginout()"/></el-link>-->
-          <div style="width: 100%;height: 75%;padding-top: 20px;margin-left: -10px">
+          <div style="width: 100%;height: 75%;padding-top: 20px;margin-left: -30px">
               <el-avatar  :size="200"  :src="user.pic" style="margin: auto"></el-avatar>
           </div>
           <div style="height: 25%;">
@@ -38,8 +38,8 @@ c<template>
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" style="color: black">
         {{ item.navItem}}
       </el-menu-item>
-      <el-input placeholder="请输入资讯、便民服务等关键字进行查询" style="width: 26%;margin-top: 10px"></el-input>
-      <el-button style="color: black;background-color: lightblue;margin-left: -4px;width: 90px" @click="search()">搜索</el-button>
+      <!--<el-input placeholder="请输入资讯、便民服务等关键字进行查询" style="width: 26%;margin-top: 10px"></el-input>-->
+      <!--<el-button style="color: black;background-color: lightblue;margin-left: -4px;width: 90px" @click="search()">搜索</el-button>-->
     </el-menu>
     </div>
         <div>
@@ -128,7 +128,8 @@ c<template>
             type: 'success'
           });
         this.$router.push({path:'/login'})
-      }
+      },
+
     }
   }
 </script>

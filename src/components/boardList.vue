@@ -1,6 +1,13 @@
 <template>
   <div style="width: 100%;height: 600px;margin: auto">
-  <div style="margin: auto">
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>网站维护</el-breadcrumb-item>
+        <el-breadcrumb-item>社区公告</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
+  <div style="margin: auto;margin-top: 5px">
     <el-table :data="board" stripe style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)">
       <el-table-column
         prop="boardId"

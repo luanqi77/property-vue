@@ -1,5 +1,12 @@
 <template>
-  <div style="width: 80%;height: 600px;margin: auto">
+  <div style="width: 100%;height: 600px;margin: auto">
+    <div style="margin-left: 10px;margin-top: 15px">
+      <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
+        <el-breadcrumb-item :to="{ path: '/staffMain/staffMessage' }">主页</el-breadcrumb-item>
+        <el-breadcrumb-item>报修处理</el-breadcrumb-item>
+        <el-breadcrumb-item>修改车位</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div style="margin-left: 400px;width: 100%;margin-top: 100px">
       <el-form :inline="true" :model="userparking" class="demo-form-inline" style="margin: auto">
         <el-form-item label="用户ID" prop="userId">
