@@ -6,9 +6,10 @@
         <el-breadcrumb-item>物业缴费率</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-    <span style="font-size: 24px;color: cornflowerblue;margin-left: 50px;height: 50px;line-height: 50px">公示公告</span>
-    <div id="myChart" :style="{width: '1000px', height: '1000px'}"></div>
-    <!--公示公告-->
+    <div style="font-size: 20px;margin-left: 300px">飞翔物业小区住户缴费率</div>
+
+    <br/>
+    <div id="myChart" style="margin-left: 400px" :style="{width: '700px', height: '600px'}"></div>
   </div>
 </template>
 <script>
@@ -37,7 +38,7 @@
         var myChart = this.$echarts.init(document.getElementById('myChart'))
         // 绘制图表
         myChart.setOption({
-          title: {text: '云翔物业小区住户缴费率'},
+          //title: {text: '飞翔物业小区住户缴费率'},
           tooltip: {},
           xAxis: {
             data: ["1号楼", "2号楼", "3号楼", "4号楼", "5号楼"]

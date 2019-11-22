@@ -23,7 +23,7 @@
       <el-form-item label="邮箱">
       <el-input v-model="user.email" style="width: 65%;margin-left: -125px" ></el-input>
       </el-form-item>
-      <el-form-item label="上传头像" style="width: 65%;float: left" >
+      <el-form-item label="上传头像" style="width: 80%;float: left" >
         <!--<el-upload-->
           <!--class="upload-file"-->
           <!--drag-->
@@ -33,12 +33,13 @@
           <!--<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>-->
         <!--</el-upload>-->
         <el-upload
-          class="upload-file"
-          drag
-          :action="doUpload"
-          :before-upload="beforeUpload">
-          <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+          class="avatar-uploader"
+          action="api/upload"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="user.pic" :src="user.pic" name="pic" width="300px" height="200px" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
       </el-form-item>
       <el-form-item style="width: 65%;margin-left: 65px">
@@ -81,17 +82,20 @@
       this.getUser();
     },
     methods: {
-      beforeUpload(file){
-        var url='api/upload'
-        let fd=new FormData();
-        fd.append('file',file);
-        axios.post(url,fd).then(res=>{
-          if(res!=''){
-            this.user.pic=res.data;
-          }else{
-            this.$message.error('上传失败，请检查您的网络')
-          }
-        })
+      handleAvatarSuccess(res, file) {
+        this.user.pic = res;
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);

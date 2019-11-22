@@ -4,7 +4,7 @@
       <el-row class="boxsmf">
         <el-col class="boxsmfleft" :span="12">
           <div class="grid-content bg-purple">
-            <p><img src="../assets/index/logo1.png" width="80%"></img></p>
+            <router-link  to="/index"><p><img src="../assets/index/logo1.png" width="80%"></img></p></router-link>
             <span>Welcome</span>
             <i id="ima">{{ mes }}</i>
           </div>

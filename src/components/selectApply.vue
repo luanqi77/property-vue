@@ -70,7 +70,7 @@
               align="center"
             >
               <template slot-scope="apply">
-                {{ apply.row.status ? '未回复' : '已回复' }}
+                {{ apply.row.status ? '未处理' : '已处理' }}
               </template>
         </el-table-column>
 
